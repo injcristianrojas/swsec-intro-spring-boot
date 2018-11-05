@@ -1,4 +1,4 @@
-package cl.injcristianrojas;
+package cl.injcristianrojas.webapp;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
