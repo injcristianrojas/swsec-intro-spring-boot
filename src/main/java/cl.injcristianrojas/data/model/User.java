@@ -1,12 +1,16 @@
-package cl.injcristianrojas;
+package cl.injcristianrojas.data.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class User {
 
+    @Id
+    @GeneratedValue
+    private Long id;
     private String username;
-
-    public User(String username) {
-        this.username = username;
-    }
 
     public String getUsername() {
         return username;
