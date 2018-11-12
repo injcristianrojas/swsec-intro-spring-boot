@@ -22,6 +22,7 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    public static final String[] PATTERNS = {"/css/**", "/images/**", "/greeting", "/api/**"};
     @Autowired
     private WebApplicationContext applicationContext;
     private MainUserDetailsService userDetailsService;
@@ -49,9 +50,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers(PATTERNS).permitAll()
                 .anyRequest().authenticated()
-                .and().formLogin()
-                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");;
+                .and().formLogin().loginPage("/login").permitAll()
+                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");
     }
 
     @Bean
