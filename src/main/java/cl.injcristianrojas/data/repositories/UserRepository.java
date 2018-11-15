@@ -1,4 +1,4 @@
-package cl.injcristianrojas.data;
+package cl.injcristianrojas.data.repositories;
 
 import cl.injcristianrojas.data.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;

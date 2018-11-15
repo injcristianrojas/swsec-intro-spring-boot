@@ -1,6 +1,6 @@
 package cl.injcristianrojas.data.service;
 
-import cl.injcristianrojas.data.UserRepository;
+import cl.injcristianrojas.data.repositories.UserRepository;
 import cl.injcristianrojas.data.model.User;
 import cl.injcristianrojas.security.MainUserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
