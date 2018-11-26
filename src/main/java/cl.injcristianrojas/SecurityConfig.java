@@ -19,77 +19,69 @@ import org.springframework.web.context.WebApplicationContext;
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
-@Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-    @Autowired
-    private WebApplicationContext applicationContext;
-    private MainUserDetailsService userDetailsService;
-    @Autowired
-    private AuthenticationSuccessHandlerImpl successHandler;
-    @Autowired
-    private DataSource dataSource;
-
-    @PostConstruct
-    public void completeSetup() {
-        userDetailsService = applicationContext.getBean(MainUserDetailsService.class);
-    }
-
-    @Override
-    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService)
-                .passwordEncoder(encoder())
-                .and()
-                .authenticationProvider(authenticationProvider())
-                .jdbcAuthentication()
-                .dataSource(dataSource);
-    }
-
+public class SecurityConfig {
 
     @Configuration
     @Order(1)
     public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
-        @Override
         protected void configure(HttpSecurity http) throws Exception {
             http
-                    .antMatcher("/api/**")
-                    .authorizeRequests()
-                    .anyRequest().authenticated()
+                    .cors()
                     .and()
-                    .httpBasic();
-        }
-
-        protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-            auth.inMemoryAuthentication()
-                    .withUser("user").password("pass").roles("ADMIN");
+                    .csrf()
+                    .disable();
         }
     }
 
     @Configuration
-    @Order(2)
     public static class FormLoginWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
+
+        @Autowired
+        private WebApplicationContext applicationContext;
+        private MainUserDetailsService userDetailsService;
+        @Autowired
+        private AuthenticationSuccessHandlerImpl successHandler;
+        @Autowired
+        private DataSource dataSource;
+
+        @PostConstruct
+        public void completeSetup() {
+            userDetailsService = applicationContext.getBean(MainUserDetailsService.class);
+        }
+
         @Override
         protected void configure(HttpSecurity http) throws Exception {
-            http.authorizeRequests()
+            http
+                    .authorizeRequests()
                     .antMatchers("/css/**", "/images/**", "/greeting").permitAll()
                     .anyRequest().authenticated()
                     .and().formLogin().loginPage("/login").permitAll()
                     .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");
         }
-    }
 
-    @Bean
-    public DaoAuthenticationProvider authenticationProvider() {
-        final DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService);
-        authProvider.setPasswordEncoder(encoder());
-        return authProvider;
-    }
+        @Override
+        protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
+            auth.userDetailsService(userDetailsService)
+                    .passwordEncoder(encoder())
+                    .and()
+                    .authenticationProvider(authenticationProvider())
+                    .jdbcAuthentication()
+                    .dataSource(dataSource);
+        }
 
-    @Bean
-    public PasswordEncoder encoder() {
-        return NoOpPasswordEncoder.getInstance();
+        @Bean
+        public DaoAuthenticationProvider authenticationProvider() {
+            final DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+            authProvider.setUserDetailsService(userDetailsService);
+            authProvider.setPasswordEncoder(encoder());
+            return authProvider;
+        }
+
+        @Bean
+        public PasswordEncoder encoder() {
+            return NoOpPasswordEncoder.getInstance();
+        }
     }
 
 }
