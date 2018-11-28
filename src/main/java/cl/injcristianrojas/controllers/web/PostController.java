@@ -1,4 +1,4 @@
-package cl.injcristianrojas.webapp;
+package cl.injcristianrojas.controllers.web;
 
 import cl.injcristianrojas.data.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;

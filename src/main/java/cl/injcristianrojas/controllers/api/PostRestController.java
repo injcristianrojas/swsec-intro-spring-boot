@@ -1,4 +1,4 @@
-package cl.injcristianrojas.webservice;
+package cl.injcristianrojas.controllers.api;
 
 import cl.injcristianrojas.data.model.Post;
 import cl.injcristianrojas.data.repositories.PostRepository;

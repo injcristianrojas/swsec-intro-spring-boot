@@ -1,4 +1,4 @@
-package cl.injcristianrojas.webservice;
+package cl.injcristianrojas.controllers.api;
 
 import cl.injcristianrojas.data.model.User;
 import cl.injcristianrojas.data.repositories.UserRepository;
