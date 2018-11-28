@@ -1,7 +1,8 @@
 package cl.injcristianrojas;
 
-import cl.injcristianrojas.data.service.MainUserDetailsService;
-import cl.injcristianrojas.security.AuthenticationSuccessHandlerImpl;
+import javax.annotation.PostConstruct;
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,9 +18,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.context.WebApplicationContext;
 
-import javax.annotation.PostConstruct;
-import javax.sql.DataSource;
+import cl.injcristianrojas.data.service.MainUserDetailsService;
 
+@SuppressWarnings("deprecation")
 @EnableWebSecurity
 public class SecurityConfig {
 
@@ -69,7 +70,7 @@ public class SecurityConfig {
 	        return authProvider;
 	    }
 	
-	    @Bean
+		@Bean
 	    public PasswordEncoder encoder() {
 	        return NoOpPasswordEncoder.getInstance();
 	    }
