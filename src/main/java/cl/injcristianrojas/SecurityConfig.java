@@ -5,6 +5,7 @@ import cl.injcristianrojas.security.AuthenticationSuccessHandlerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -19,58 +20,80 @@ import org.springframework.web.context.WebApplicationContext;
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
-@Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig {
 
-    @Autowired
-    private WebApplicationContext applicationContext;
-    private MainUserDetailsService userDetailsService;
-    @Autowired
-    private AuthenticationSuccessHandlerImpl successHandler;
-    @Autowired
-    private DataSource dataSource;
-
-    @PostConstruct
-    public void completeSetup() {
-        userDetailsService = applicationContext.getBean(MainUserDetailsService.class);
-    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-        		.authorizeRequests()
-                .anyRequest().authenticated()
-                .and().formLogin().loginPage("/login").permitAll()
-                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");
-    }
-    
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/css/**", "/images/**");
-    }
-    
-    @Override
-    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService)
-                .passwordEncoder(encoder())
-                .and()
-                .authenticationProvider(authenticationProvider())
-                .jdbcAuthentication()
-                .dataSource(dataSource);
-    }
-
-    @Bean
-    public DaoAuthenticationProvider authenticationProvider() {
-        final DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService);
-        authProvider.setPasswordEncoder(encoder());
-        return authProvider;
-    }
-
-    @Bean
-    public PasswordEncoder encoder() {
-        return NoOpPasswordEncoder.getInstance();
-    }
-
+	@Configuration
+	public static class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	    @Autowired
+	    private WebApplicationContext applicationContext;
+	    private MainUserDetailsService userDetailsService;
+	    @Autowired
+	    private DataSource dataSource;
+	
+	    @PostConstruct
+	    public void completeSetup() {
+	        userDetailsService = applicationContext.getBean(MainUserDetailsService.class);
+	    }
+	
+	    @Override
+	    protected void configure(HttpSecurity http) throws Exception {
+	        http
+	        		.authorizeRequests()
+	                .anyRequest().authenticated()
+	                .and().formLogin().loginPage("/login").permitAll()
+	                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");
+	    }
+	    
+	    @Override
+	    public void configure(WebSecurity web) throws Exception {
+	        web.ignoring().antMatchers("/css/**", "/images/**");
+	    }
+	    
+	    @Override
+	    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
+	        auth.userDetailsService(userDetailsService)
+	                .passwordEncoder(encoder())
+	                .and()
+	                .authenticationProvider(authenticationProvider())
+	                .jdbcAuthentication()
+	                .dataSource(dataSource);
+	    }
+	
+	    @Bean
+	    public DaoAuthenticationProvider authenticationProvider() {
+	        final DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+	        authProvider.setUserDetailsService(userDetailsService);
+	        authProvider.setPasswordEncoder(encoder());
+	        return authProvider;
+	    }
+	
+	    @Bean
+	    public PasswordEncoder encoder() {
+	        return NoOpPasswordEncoder.getInstance();
+	    }
+	
+	}
+	
+	@Order(1)
+	@Configuration
+	public static class ApiSecurityConfig extends WebSecurityConfigurerAdapter {
+		
+		@Override
+	    protected void configure(HttpSecurity http) throws Exception {
+	        http.
+	        		antMatcher("/api/**")
+	        		.cors()
+	        		.and()
+	        		.csrf()
+	        		.disable();
+	    }
+		
+		@Override
+        public void configure(WebSecurity web) throws Exception {
+            super.configure(web);
+        }
+		
+	}
 }
