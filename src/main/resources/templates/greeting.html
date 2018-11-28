@@ -19,10 +19,11 @@
         <div id="content">
 
             <div th:if="${person == null}">
-                <form method="POST" action="/greeting">
+                <form method="post" action="/greeting">
                     <p>Dime tu nombre:
                         <input type="text" id="person" name="person"/>
                         <input type="submit" id="submitButton" name="submitButton" value="Saludar"/>
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                     </p>
                 </form>
             </div>
