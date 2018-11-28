@@ -9,8 +9,7 @@
             <li>|</li>
             <li><a title="Saludos" id="greetings" href="/greeting">Saludos</a></li>
             <li>|</li>
-            <li sec:authorize="isAuthenticated()">Usuario: <span th:text="${#authentication.getPrincipal().getUsername()}"></span></li>
-            <li sec:authorize="isAuthenticated()"><a title="Salir" id="exit" href="/logout">Salir</a></li>
+            <li sec:authorize="isAuthenticated()">Usuario: <span th:text="${#authentication.getPrincipal().getUsername()}"></span><a title="Salir" id="exit" href="/logout">&nbsp;(Salir)</a></li>
             <li sec:authorize="isAnonymous()"><a title="Ingresar" id="exit" href="/login">Login</a></li>
         </ul>
     </div>
