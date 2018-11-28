@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class PostController {
+public class PostRestController {
 
     @Autowired
     private PostRepository postRepo;

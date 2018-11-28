@@ -10,7 +10,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 @Controller
-public class GreetingController {
+public class GreetingWebController {
 
     @PostMapping("/greeting")
     public String sayHello(@RequestParam("person") String person, Model model) {

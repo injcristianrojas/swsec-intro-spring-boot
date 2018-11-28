@@ -8,7 +8,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 @Controller
-public class HomeController {
+public class HomeWebController {
 
     @RequestMapping("/")
     public String index(Model model) {
