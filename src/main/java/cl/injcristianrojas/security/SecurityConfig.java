@@ -1,4 +1,4 @@
-package cl.injcristianrojas;
+package cl.injcristianrojas.security;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
