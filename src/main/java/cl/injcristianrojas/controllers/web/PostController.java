@@ -1,5 +1,6 @@
 package cl.injcristianrojas.controllers.web;
 
+import cl.injcristianrojas.data.model.Post;
 import cl.injcristianrojas.data.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,12 +17,16 @@ public class PostController {
 
     @PostMapping("/posts")
     public String createPost(@RequestParam("message") String message, Model model) {
-        return "posts";
+    	Post post = new Post();
+    	post.setMessage(message);
+    	repo.save(post);
+    	model.addAttribute("posts", repo.findAll());
+    	return "posts";
     }
 
     @GetMapping("/posts")
     public String showPosts(Model model) {
         model.addAttribute("posts", repo.findAll());
-        return "posts/allPosts";
+        return "posts";
     }
 }
