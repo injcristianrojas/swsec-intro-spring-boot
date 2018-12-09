@@ -27,7 +27,7 @@
             </div>
 			<table>
 				<tr th:each="post: ${posts}">
-				    <td th:text="${post.message}" />
+				    <td th:utext="${post.message}" />
 				</tr>
 			</table>
         </div>
