@@ -1,7 +1,5 @@
 package cl.injcristianrojas;
 
-import java.util.Arrays;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +58,7 @@ public class InitialDataProvisioner implements ApplicationListener<ContextRefres
 		User user = new User();
 		user.setUsername(username);
 		user.setPassword(passwordEncoder.encode(password));
-		user.setRoles(Arrays.asList(roleRepository.findByRolename(rolename)));
+		user.setRole(roleRepository.findByRolename(rolename));
 		userRepository.save(user);
 		alreadySetup = true;
 	}
