@@ -1,10 +1,9 @@
 package cl.injcristianrojas.security.jwt;
 
-import static cl.injcristianrojas.security.jwt.Constants.EXPIRATION_TIME;
+import static cl.injcristianrojas.security.jwt.Constants.EXPIRATION_TIME_IN_MILLISECONDS;
 import static cl.injcristianrojas.security.jwt.Constants.HEADER_STRING;
-import static cl.injcristianrojas.security.jwt.Constants.SECRET;
 import static cl.injcristianrojas.security.jwt.Constants.TOKEN_PREFIX;
-import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
+import static cl.injcristianrojas.security.jwt.Constants.verificationAlgorithm;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -54,8 +53,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		
 		String token = JWT.create()
 				.withSubject(((User) auth.getPrincipal()).getUsername())
-				.withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-				.sign(HMAC512(SECRET.getBytes()));
+				.withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME_IN_MILLISECONDS))
+				.sign(verificationAlgorithm());
 		res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
 	}
 }
