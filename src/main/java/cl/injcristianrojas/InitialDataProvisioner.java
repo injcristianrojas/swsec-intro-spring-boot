@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 
 import cl.injcristianrojas.data.model.Post;
 import cl.injcristianrojas.data.model.Role;
-import cl.injcristianrojas.data.model.User;
+import cl.injcristianrojas.data.model.ApplicationUser;
 import cl.injcristianrojas.data.repositories.PostRepository;
 import cl.injcristianrojas.data.repositories.RoleRepository;
-import cl.injcristianrojas.data.repositories.UserRepository;
+import cl.injcristianrojas.data.repositories.ApplicationUserRepository;
 
 @Component
 public class InitialDataProvisioner implements ApplicationListener<ContextRefreshedEvent> {
@@ -21,7 +21,7 @@ public class InitialDataProvisioner implements ApplicationListener<ContextRefres
 	boolean alreadySetup = false;
 
 	@Autowired
-	private UserRepository userRepository;
+	private ApplicationUserRepository userRepository;
 	
 	@Autowired
 	private RoleRepository roleRepository;
@@ -55,7 +55,7 @@ public class InitialDataProvisioner implements ApplicationListener<ContextRefres
 	}
 
 	private void createUser(String username, String password, String rolename) {
-		User user = new User();
+		ApplicationUser user = new ApplicationUser();
 		user.setUsername(username);
 		user.setPassword(passwordEncoder.encode(password));
 		user.setRole(roleRepository.findByRolename(rolename));
