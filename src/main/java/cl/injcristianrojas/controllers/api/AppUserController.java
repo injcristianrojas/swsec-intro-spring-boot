@@ -7,24 +7,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cl.injcristianrojas.data.model.ApplicationUser;
-import cl.injcristianrojas.data.repositories.ApplicationUserRepository;
+import cl.injcristianrojas.data.model.AppUser;
+import cl.injcristianrojas.data.repositories.AppUserRepository;
 
 @SuppressWarnings("deprecation")
 @RestController
 @RequestMapping("/api")
-public class ApplicationUserController {
+public class AppUserController {
 
-	private ApplicationUserRepository applicationUserRepository;
+	private AppUserRepository applicationUserRepository;
 	private PasswordEncoder passwordEncoder;
 
-	public ApplicationUserController(ApplicationUserRepository applicationUserRepository) {
+	public AppUserController(AppUserRepository applicationUserRepository) {
 		this.applicationUserRepository = applicationUserRepository;
 		this.passwordEncoder = NoOpPasswordEncoder.getInstance();
 	}
 	
 	@PostMapping("/sign-up")
-    public void signUp(@RequestBody ApplicationUser user) {
+    public void signUp(@RequestBody AppUser user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         applicationUserRepository.save(user);
     }

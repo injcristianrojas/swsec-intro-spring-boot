@@ -6,13 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import cl.injcristianrojas.data.repositories.ApplicationUserRepository;
+import cl.injcristianrojas.data.repositories.AppUserRepository;
 
 @Controller
 public class UserWebController {
 
     @Autowired
-    private ApplicationUserRepository userRepo;
+    private AppUserRepository userRepo;
 
     @GetMapping("/users")
     public String showUsers(Model model) {

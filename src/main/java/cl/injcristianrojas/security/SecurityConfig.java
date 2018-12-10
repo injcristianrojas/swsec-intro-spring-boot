@@ -24,7 +24,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import cl.injcristianrojas.data.service.MainUserDetailsService;
-import cl.injcristianrojas.data.service.UserDetailsServiceImpl;
+import cl.injcristianrojas.data.service.JwtUserDetailsService;
 import cl.injcristianrojas.security.jwt.JwtAuthenticationFilter;
 import cl.injcristianrojas.security.jwt.JwtAuthorizationFilter;
 
@@ -84,10 +84,10 @@ public class SecurityConfig {
 	@Configuration
 	public static class ApiSecurityConfig extends WebSecurityConfigurerAdapter {
 
-		private UserDetailsServiceImpl userDetailsService;
+		private JwtUserDetailsService userDetailsService;
 		private PasswordEncoder passwordEncoder;
 
-		public ApiSecurityConfig(UserDetailsServiceImpl userDetailsService) {
+		public ApiSecurityConfig(JwtUserDetailsService userDetailsService) {
 			this.userDetailsService = userDetailsService;
 			this.passwordEncoder = NoOpPasswordEncoder.getInstance();
 		}

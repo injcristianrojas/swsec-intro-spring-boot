@@ -1,6 +1,6 @@
 package cl.injcristianrojas.security;
 
-import cl.injcristianrojas.data.model.ApplicationUser;
+import cl.injcristianrojas.data.model.AppUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -9,9 +9,9 @@ import java.util.Collection;
 public class MainUserPrincipal implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
-	private ApplicationUser user;
+	private AppUser user;
 
-    public MainUserPrincipal(ApplicationUser user) {
+    public MainUserPrincipal(AppUser user) {
         this.user = user;
     }
 

@@ -6,23 +6,23 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import cl.injcristianrojas.data.model.ApplicationUser;
-import cl.injcristianrojas.data.repositories.ApplicationUserRepository;
+import cl.injcristianrojas.data.model.AppUser;
+import cl.injcristianrojas.data.repositories.AppUserRepository;
 
 import static java.util.Collections.emptyList;
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class JwtUserDetailsService implements UserDetailsService {
 
-	private ApplicationUserRepository applicationUserRepository;
+	private AppUserRepository applicationUserRepository;
 
-    public UserDetailsServiceImpl(ApplicationUserRepository applicationUserRepository) {
+    public JwtUserDetailsService(AppUserRepository applicationUserRepository) {
         this.applicationUserRepository = applicationUserRepository;
     }
     
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        ApplicationUser applicationUser = applicationUserRepository.findByUsername(username);
+        AppUser applicationUser = applicationUserRepository.findByUsername(username);
         if (applicationUser == null) {
             throw new UsernameNotFoundException(username);
         }
