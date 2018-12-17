@@ -4,3 +4,7 @@ logging:
       springframework:
         web: DEBUG
     root: INFO
+
+spring:
+  jpa:
+    show-sql: TRUE
