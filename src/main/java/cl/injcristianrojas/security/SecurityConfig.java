@@ -40,8 +40,10 @@ public class SecurityConfig {
 
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
-			http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll()
-					.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");
+			http
+				.authorizeRequests().anyRequest()
+				.authenticated().and().formLogin().loginPage("/login").permitAll()
+				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");
 		}
 
 		@Override
@@ -82,6 +84,25 @@ public class SecurityConfig {
 	        		.and()
 	        		.csrf()
 	        		.disable();
+	    }
+		
+		@Override
+        public void configure(WebSecurity web) throws Exception {
+            super.configure(web);
+        }
+		
+	}
+	
+	@Order(2)
+	@Configuration
+	public static class H2ConsoleConfig extends WebSecurityConfigurerAdapter {
+		
+		@Override
+	    protected void configure(HttpSecurity http) throws Exception {
+	        http.
+	        	authorizeRequests().antMatchers("/h2-console/**").permitAll()
+	        	.and().cors().and().csrf().disable()
+        		.headers().frameOptions().sameOrigin();
 	    }
 		
 		@Override
