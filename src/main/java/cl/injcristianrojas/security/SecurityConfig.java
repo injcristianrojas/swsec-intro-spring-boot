@@ -1,5 +1,7 @@
 package cl.injcristianrojas.security;
 
+import static cl.injcristianrojas.security.jwt.Constants.SIGN_UP_URL;
+
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
@@ -23,12 +25,10 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import cl.injcristianrojas.data.service.MainUserDetailsService;
 import cl.injcristianrojas.data.service.JwtUserDetailsService;
+import cl.injcristianrojas.data.service.MainUserDetailsService;
 import cl.injcristianrojas.security.jwt.JwtAuthenticationFilter;
 import cl.injcristianrojas.security.jwt.JwtAuthorizationFilter;
-
-import static cl.injcristianrojas.security.jwt.Constants.SIGN_UP_URL;
 
 @SuppressWarnings("deprecation")
 @EnableWebSecurity
@@ -50,8 +50,10 @@ public class SecurityConfig {
 
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
-			http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll()
-					.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");
+			http
+				.authorizeRequests().anyRequest()
+				.authenticated().and().formLogin().loginPage("/login").permitAll()
+				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");
 		}
 
 		@Override
@@ -120,4 +122,5 @@ public class SecurityConfig {
 		}
 
 	}
+
 }
