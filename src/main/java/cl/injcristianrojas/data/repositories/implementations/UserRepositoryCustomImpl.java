@@ -20,8 +20,8 @@ public class UserRepositoryCustomImpl implements AppUserRepositoryCustom {
 	EntityManager entityManager;
 	
 	@Override
-	public List<AppUser> getUsersByRoleId(String roleId) {
-		Query query =  entityManager.createNativeQuery("SELECT * FROM users where role_id = " + roleId, AppUser.class);
+	public List<AppUser> getUsersByUsername(String username) {
+		Query query =  entityManager.createNativeQuery("SELECT * FROM users where username = '" + username + "'");
 		return query.getResultList();
 	}
 

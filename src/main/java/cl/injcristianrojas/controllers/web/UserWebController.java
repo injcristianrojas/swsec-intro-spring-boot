@@ -20,9 +20,9 @@ public class UserWebController {
         return "users";
     }
     
-    @GetMapping("/users/role/{roleid}")
-    public String showUsersByRoleId(Model model, @PathVariable String roleid) {
-    	model.addAttribute("users", userRepo.getUsersByRoleId(roleid));
+    @GetMapping("/users/user/{username}")
+    public String showUsersByRoleId(Model model, @PathVariable String username) {
+		model.addAttribute("users", userRepo.getUsersByUsername(username));
         return "users";
     }
 
