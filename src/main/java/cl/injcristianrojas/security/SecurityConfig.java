@@ -93,22 +93,4 @@ public class SecurityConfig {
 		
 	}
 	
-	@Order(2)
-	@Configuration
-	public static class H2ConsoleConfig extends WebSecurityConfigurerAdapter {
-		
-		@Override
-	    protected void configure(HttpSecurity http) throws Exception {
-	        http.
-	        	authorizeRequests().antMatchers("/h2-console/**").permitAll()
-	        	.and().cors().and().csrf().disable()
-        		.headers().frameOptions().sameOrigin();
-	    }
-		
-		@Override
-        public void configure(WebSecurity web) throws Exception {
-            super.configure(web);
-        }
-		
-	}
 }
