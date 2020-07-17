@@ -5,3 +5,4 @@ target/*
 .settings/*
 .sts4*
 .attach*
+.vscode*
