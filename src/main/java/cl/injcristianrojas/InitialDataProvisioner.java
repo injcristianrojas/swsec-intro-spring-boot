@@ -19,6 +19,8 @@ import cl.injcristianrojas.data.repositories.AppUserRepository;
 public class InitialDataProvisioner implements ApplicationListener<ContextRefreshedEvent> {
 
 	boolean alreadySetup = false;
+	private static final String ROLE_ADMIN = "ROLE_ADMIN";
+	private static final String ROLE_USER = "ROLE_USER";
 
 	@Autowired
 	private AppUserRepository userRepository;
@@ -36,13 +38,13 @@ public class InitialDataProvisioner implements ApplicationListener<ContextRefres
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		if (alreadySetup)
 			return;
-		createRoleIfNotFound("ROLE_ADMIN");
-		createRoleIfNotFound("ROLE_USER");
+		createRoleIfNotFound(ROLE_ADMIN);
+		createRoleIfNotFound(ROLE_USER);
 		
-		createUser("admin", "admin", "ROLE_ADMIN");
-		createUser("jperez", "123", "ROLE_USER");
-		createUser("jbolsonaro", "j", "ROLE_USER");
-		createUser("dtrump", "great", "ROLE_USER");
+		createUser("admin", "admin", ROLE_ADMIN);
+		createUser("jperez", "123", ROLE_USER);
+		createUser("jbolsonaro", "j", ROLE_USER);
+		createUser("dtrump", "great", ROLE_USER);
 		
 		createPost("Holi");
 		createPost("Andai soli");

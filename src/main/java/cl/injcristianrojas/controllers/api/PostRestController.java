@@ -22,7 +22,7 @@ public class PostRestController {
     }
 
     @PostMapping("/api/posts")
-    Post newPost(@RequestBody Post newPost){
+    public Post newPost(@RequestBody Post newPost){
         return postRepo.save(newPost);
     }
 }
