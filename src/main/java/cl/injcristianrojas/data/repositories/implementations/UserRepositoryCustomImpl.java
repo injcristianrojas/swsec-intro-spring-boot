@@ -21,7 +21,7 @@ public class UserRepositoryCustomImpl implements AppUserRepositoryCustom {
 	
 	@Override
 	public List<AppUser> getUsersByUsername(String username) {
-		Query query =  entityManager.createNativeQuery("SELECT * FROM users where username = '" + username + "'");
+		Query query = entityManager.createNativeQuery("SELECT * FROM users where username = '" + username + "'");
 		return query.getResultList();
 	}
 

@@ -46,8 +46,7 @@ public class InitialDataProvisioner implements ApplicationListener<ContextRefres
 		createUser("jbolsonaro", "j", ROLE_USER);
 		createUser("dtrump", "great", ROLE_USER);
 		
-		createPost("Holi");
-		createPost("Andai soli");
+		createPost("Bienvenidos a Fans de las Aves Chilenas. Soy el administrador.");
 	}
 
 	private void createPost(String message) {

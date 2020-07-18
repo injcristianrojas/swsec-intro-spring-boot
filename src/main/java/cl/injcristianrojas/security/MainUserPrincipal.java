@@ -9,8 +9,8 @@ import java.util.Collections;
 
 public class MainUserPrincipal implements UserDetails {
 
-	private static final long serialVersionUID = 1L;
-	private AppUser user;
+    private static final long serialVersionUID = -3362308597047788814L;
+    private AppUser user;
 
     public MainUserPrincipal(AppUser user) {
         this.user = user;
