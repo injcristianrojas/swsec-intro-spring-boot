@@ -9,4 +9,5 @@ import cl.injcristianrojas.data.model.AppUser;
 @Repository
 public interface AppUserRepositoryCustom {
     List<AppUser> getUsersByUsername(String username);
+    List<AppUser> getUsersByType(String type);
 }
