@@ -48,7 +48,7 @@ public class SecurityConfig {
 
 		@Override
 		public void configure(WebSecurity web) throws Exception {
-			web.ignoring().antMatchers("/css/**", "/images/**", "/h2-console/**");
+			web.ignoring().antMatchers("/css/**", "/images/**", "/h2/**");
 		}
 
 		@Override

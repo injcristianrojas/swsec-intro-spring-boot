@@ -8,5 +8,5 @@ import cl.injcristianrojas.data.model.AppUser;
 
 @Repository
 public interface AppUserRepositoryCustom {
-    List<AppUser> getUsersByUsername(String roleId);
+    List<AppUser> getUsersByUsername(String username);
 }

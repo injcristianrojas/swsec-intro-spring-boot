@@ -6,15 +6,20 @@
     <div id="menu">
         <ul>
             <li><a title="Home" id="home" href="/">Home</a></li>
+            <span sec:authorize="isFullyAuthenticated()">
             <li>|</li>
             <li><a title="Saludos" id="greetings" href="/greeting">Saludos</a></li>
             <li>|</li>
             <li><a title="Foro" id="posts" href="/posts">Foro</a></li>
             <li>|</li>
             <li><a title="Usuarios" id="users" href="/users">Usuarios</a></li>
-            <li>|
-            <li sec:authorize="isFullyAuthenticated()">Usuario: <span th:text="${#authentication.getPrincipal().getUsername()}"></span><a title="Salir" id="exit" href="/logout">&nbsp;(Salir)</a></li>
-            <li sec:authorize="!isFullyAuthenticated()"><a title="Ingresar" id="exit" href="/login">Login</a></li>
+            <li>|</li>
+            <li>Usuario: <span th:text="${#authentication.getPrincipal().getUsername()}"></span><a title="Salir" id="exit" href="/logout">&nbsp;(Salir)</a></li>
+            </span>
+            <span sec:authorize="!isFullyAuthenticated()">
+            <li>|</li>
+            <li><a title="Ingresar" id="exit" href="/login">Login</a></li>
+            </span>
         </ul>
     </div>
 
