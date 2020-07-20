@@ -43,7 +43,8 @@ public class SecurityConfig {
 			http
 				.authorizeRequests().anyRequest()
 				.authenticated().and().formLogin().loginPage("/login").permitAll()
-				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");
+				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
+				.and().csrf().disable();
 		}
 
 		@Override
