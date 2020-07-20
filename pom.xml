@@ -117,6 +117,24 @@
                 <version>3.6.0.1398</version>
             </plugin>
 
+            <plugin>
+                <groupId>de.martinreinhardt-online</groupId>
+                <artifactId>zap-maven-plugin</artifactId>
+                <version>0.1.0</version>
+                <configuration>
+                    <zapPath>~/tools/owasp-zap/</zapPath>
+                    <zapPort>9090</zapPort>
+                    <targetUrl>http://localhost:8080/</targetUrl>
+                    <authenticationType>form</authenticationType>
+                        <username>jperez</username>
+                        <password>123</password>
+                        <loginUrl>http://localhost:8080/login</loginUrl>
+                        <loggedInRegex><![CDATA[\QUsuario: <span>jperez</span>\E]]></loggedInRegex>
+                        <loggedOutRegex><![CDATA[\Q<a title="Ingresar" id="exit" href="/login">\E]]></loggedOutRegex>
+                    <zapOptions>-daemon -config scanner.strength=INSANE -config api.disablekey=true -config api.incerrordetails=true</zapOptions>
+                </configuration>
+            </plugin>
+
 		</plugins>
 	</build>
 
