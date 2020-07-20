@@ -12,6 +12,7 @@
         <start-class>cl.injcristianrojas.Application</start-class>
         <sonar.dependencyCheck.reportPath>target/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
         <sonar.dependencyCheck.htmlReportPath>target/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
+        <sonar.zaproxy.reportPath>target/zap-reports/zapReport.xml</sonar.zaproxy.reportPath>
     </properties>
 
     <parent>
@@ -123,7 +124,7 @@
                 <version>0.1.0</version>
                 <configuration>
                     <zapPath>~/tools/owasp-zap/</zapPath>
-                    <zapPort>9090</zapPort>
+                    <zapPort>9091</zapPort>
                     <targetUrl>http://localhost:8080/</targetUrl>
                     <authenticationType>form</authenticationType>
                         <username>jperez</username>
