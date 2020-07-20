@@ -34,7 +34,7 @@ public class ApiTests {
 		this.mvc.perform(get("/api/posts"))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$[0].id", is(1)))
-				.andExpect(jsonPath("$[0].message", is("Holi")));
+				.andExpect(jsonPath("$[0].message", is("Bienvenidos a Fans de las Aves Chilenas. Soy el administrador.")));
 				
 	}
 }
