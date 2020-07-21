@@ -32,5 +32,5 @@ Make sure that the `zapPath` parameter is set in the POM for OWASP ZAP's
 location, then:
 
 ```shell
-mvn compile spotbugs:spotbugs org.owasp:dependency-check-maven:check spring-boot:start de.martinreinhardt-online:zap-maven-plugin:analyze spring-boot:stop sonar:sonar
+mvn
 ```

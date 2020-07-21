@@ -78,6 +78,11 @@
     </dependencies>
 
 	<build>
+
+        <defaultGoal>
+        compile spotbugs:spotbugs org.owasp:dependency-check-maven:check spring-boot:start de.martinreinhardt-online:zap-maven-plugin:analyze spring-boot:stop sonar:sonar
+        </defaultGoal>
+
 		<plugins>
 
 			<plugin>
