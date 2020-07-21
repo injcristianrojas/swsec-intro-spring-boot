@@ -85,7 +85,26 @@
 
 		<plugins>
 
-			<plugin>
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>properties-maven-plugin</artifactId>
+            <version>1.0.0</version>
+            <executions>
+                <execution>
+                    <phase>initialize</phase>
+                    <goals>
+                        <goal>read-project-properties</goal>
+                    </goals>
+                    <configuration>
+                    <files>
+                        <file>main.properties</file>
+                    </files>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+            
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
@@ -128,7 +147,7 @@
                 <artifactId>zap-maven-plugin</artifactId>
                 <version>0.1.0</version>
                 <configuration>
-                    <zapPath>~/tools/owasp-zap/</zapPath>
+                    <zapPath>${zap.location}</zapPath>
                     <zapPort>9091</zapPort>
                     <targetUrl>http://localhost:8080/</targetUrl>
                     <authenticationType>form</authenticationType>

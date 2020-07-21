@@ -28,8 +28,14 @@ Then go to the sonarqube machine (localhost:9000), login as admin/admin, go to
 "Quality Profiles", and in the Java section, set "FindBugs Security Audit" as
 the default profile (Settings on the right, "Set as default").
 
-Make sure that the `zapPath` parameter is set in the POM for OWASP ZAP's
-location, then:
+Create a file called `main.properties` which contains the location of the OWASP
+ZAP software. For instance:
+
+```
+zap.location=C:\Program Files (x86)\OWASP\Zed Attack Proxy
+```
+
+Then launch the SAST/DAST/SCA process using:
 
 ```shell
 mvn

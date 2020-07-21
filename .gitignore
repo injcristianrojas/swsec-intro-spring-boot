@@ -6,3 +6,4 @@ target/*
 .sts4*
 .attach*
 .vscode*
+*.properties
