@@ -87,7 +87,7 @@
 
 	<build>
 
-        <finalName>${artifactId}</finalName>
+        <finalName>webapps/ROOT</finalName>
 
         <defaultGoal>
         compile spotbugs:spotbugs org.owasp:dependency-check-maven:check spring-boot:start de.martinreinhardt-online:zap-maven-plugin:analyze spring-boot:stop sonar:sonar
