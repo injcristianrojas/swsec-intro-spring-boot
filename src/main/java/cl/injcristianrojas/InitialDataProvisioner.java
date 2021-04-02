@@ -8,9 +8,9 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import cl.injcristianrojas.data.jpa.model.Post;
-import cl.injcristianrojas.data.jpa.model.Role;
-import cl.injcristianrojas.data.jpa.model.User;
+import cl.injcristianrojas.data.jpa.model.PostJPA;
+import cl.injcristianrojas.data.jpa.model.RoleJPA;
+import cl.injcristianrojas.data.jpa.model.UserJPA;
 import cl.injcristianrojas.data.jpa.repositories.PostRepository;
 import cl.injcristianrojas.data.jpa.repositories.RoleRepository;
 import cl.injcristianrojas.data.jpa.repositories.AppUserRepository;
@@ -50,13 +50,13 @@ public class InitialDataProvisioner implements ApplicationListener<ContextRefres
 	}
 
 	private void createPost(String message) {
-		Post post = new Post();
+		PostJPA post = new PostJPA();
 		post.setMessage(message);
 		postRepository.save(post);
 	}
 
 	private void createUser(String username, String password, String rolename) {
-		User user = new User();
+		UserJPA user = new UserJPA();
 		user.setUsername(username);
 		user.setPassword(passwordEncoder.encode(password));
 		user.setRole(roleRepository.findByRolename(rolename));
@@ -65,10 +65,10 @@ public class InitialDataProvisioner implements ApplicationListener<ContextRefres
 	}
 
 	@Transactional
-	private Role createRoleIfNotFound(String name) {
-		Role role = roleRepository.findByRolename(name);
+	private RoleJPA createRoleIfNotFound(String name) {
+		RoleJPA role = roleRepository.findByRolename(name);
 		if (role == null) {
-			role = new Role();
+			role = new RoleJPA();
 			role.setName(name);
 			roleRepository.save(role);
 		}

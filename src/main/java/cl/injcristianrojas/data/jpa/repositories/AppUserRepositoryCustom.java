@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import cl.injcristianrojas.data.jpa.model.User;
+import cl.injcristianrojas.data.jpa.model.UserJPA;
 
 @Repository
 public interface AppUserRepositoryCustom {
-    List<User> getUsersByUsername(String username);
-    List<User> getUsersByType(String type);
+    List<UserJPA> getUsersByUsername(String username);
+    List<UserJPA> getUsersByType(String type);
 }

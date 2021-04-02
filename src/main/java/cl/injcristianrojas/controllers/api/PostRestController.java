@@ -1,7 +1,7 @@
 package cl.injcristianrojas.controllers.api;
 
-import cl.injcristianrojas.data.jpa.model.Post;
-import cl.injcristianrojas.data.jpa.repositories.PostRepository;
+import cl.injcristianrojas.data.jdbc.model.PostJDBC;
+import cl.injcristianrojas.data.jdbc.service.PostServiceJDBC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,15 +14,15 @@ import java.util.List;
 public class PostRestController {
 
     @Autowired
-    private PostRepository postRepo;
+    private PostServiceJDBC postService;
 
     @GetMapping("/api/posts")
-    public List<Post> retrieveAllPosts() {
-        return postRepo.findAll();
+    public List<PostJDBC> retrieveAllPosts() {
+        return postService.findAll();
     }
 
-    @PostMapping("/api/posts")
-    public Post newPost(@RequestBody Post newPost){
-        return postRepo.save(newPost);
+    @PostMapping("/api/posts/add")
+    public PostJDBC newPost(@RequestBody PostJDBC newPost){
+        return postService.save(newPost);
     }
 }

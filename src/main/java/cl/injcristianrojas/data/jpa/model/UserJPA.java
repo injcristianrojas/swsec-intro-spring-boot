@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class UserJPA {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class User {
     private boolean enabled = true;
     @ManyToOne
     @JoinColumn(name = "role_id")
-    private Role role;
+    private RoleJPA role;
 
     public String getUsername() {
         return username;
@@ -54,11 +54,11 @@ public class User {
         this.enabled = enabled;
     }
 
-	public Role getRole() {
+	public RoleJPA getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(RoleJPA role) {
 		this.role = role;
 	}
 }

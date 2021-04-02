@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cl.injcristianrojas.data.jpa.model.User;
+import cl.injcristianrojas.data.jpa.model.UserJPA;
 import cl.injcristianrojas.data.jpa.repositories.AppUserRepository;
 
 @SuppressWarnings("deprecation")
@@ -24,7 +24,7 @@ public class AppUserController {
 	}
 	
 	@PostMapping("/sign-up")
-    public void signUp(@RequestBody User user) {
+    public void signUp(@RequestBody UserJPA user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         applicationUserRepository.save(user);
     }
