@@ -9,7 +9,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import cl.injcristianrojas.data.jpa.model.AppUser;
+import cl.injcristianrojas.data.jpa.model.User;
 import cl.injcristianrojas.data.jpa.repositories.AppUserRepositoryCustom;
 
 @Repository
@@ -20,14 +20,14 @@ public class AppUserRepositoryCustomImpl implements AppUserRepositoryCustom {
 	EntityManager entityManager;
 	
 	@Override
-	public List<AppUser> getUsersByUsername(String username) {
-		TypedQuery<AppUser> query = entityManager.createQuery("from AppUser where username = '" + username + "'", AppUser.class);
+	public List<User> getUsersByUsername(String username) {
+		TypedQuery<User> query = entityManager.createQuery("from AppUser where username = '" + username + "'", User.class);
 		return query.getResultList();
 	}
 
 	@Override
-	public List<AppUser> getUsersByType(String type) {
-		TypedQuery<AppUser> query = entityManager.createQuery("from AppUser where role_id = " + type, AppUser.class);
+	public List<User> getUsersByType(String type) {
+		TypedQuery<User> query = entityManager.createQuery("from AppUser where role_id = " + type, User.class);
 		return query.getResultList();
 	}
 

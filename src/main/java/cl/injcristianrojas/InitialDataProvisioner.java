@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import cl.injcristianrojas.data.jpa.model.Post;
 import cl.injcristianrojas.data.jpa.model.Role;
-import cl.injcristianrojas.data.jpa.model.AppUser;
+import cl.injcristianrojas.data.jpa.model.User;
 import cl.injcristianrojas.data.jpa.repositories.PostRepository;
 import cl.injcristianrojas.data.jpa.repositories.RoleRepository;
 import cl.injcristianrojas.data.jpa.repositories.AppUserRepository;
@@ -56,7 +56,7 @@ public class InitialDataProvisioner implements ApplicationListener<ContextRefres
 	}
 
 	private void createUser(String username, String password, String rolename) {
-		AppUser user = new AppUser();
+		User user = new User();
 		user.setUsername(username);
 		user.setPassword(passwordEncoder.encode(password));
 		user.setRole(roleRepository.findByRolename(rolename));
