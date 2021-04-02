@@ -8,12 +8,12 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import cl.injcristianrojas.data.model.Post;
-import cl.injcristianrojas.data.model.Role;
-import cl.injcristianrojas.data.model.AppUser;
-import cl.injcristianrojas.data.repositories.PostRepository;
-import cl.injcristianrojas.data.repositories.RoleRepository;
-import cl.injcristianrojas.data.repositories.AppUserRepository;
+import cl.injcristianrojas.data.jpa.model.Post;
+import cl.injcristianrojas.data.jpa.model.Role;
+import cl.injcristianrojas.data.jpa.model.AppUser;
+import cl.injcristianrojas.data.jpa.repositories.PostRepository;
+import cl.injcristianrojas.data.jpa.repositories.RoleRepository;
+import cl.injcristianrojas.data.jpa.repositories.AppUserRepository;
 
 @Component
 public class InitialDataProvisioner implements ApplicationListener<ContextRefreshedEvent> {

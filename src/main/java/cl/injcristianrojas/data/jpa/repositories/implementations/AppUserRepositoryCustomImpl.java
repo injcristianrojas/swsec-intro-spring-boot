@@ -1,4 +1,4 @@
-package cl.injcristianrojas.data.repositories.implementations;
+package cl.injcristianrojas.data.jpa.repositories.implementations;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import cl.injcristianrojas.data.model.AppUser;
-import cl.injcristianrojas.data.repositories.AppUserRepositoryCustom;
+import cl.injcristianrojas.data.jpa.model.AppUser;
+import cl.injcristianrojas.data.jpa.repositories.AppUserRepositoryCustom;
 
 @Repository
 @Transactional

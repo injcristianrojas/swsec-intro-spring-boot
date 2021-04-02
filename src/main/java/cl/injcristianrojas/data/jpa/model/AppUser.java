@@ -1,4 +1,4 @@
-package cl.injcristianrojas.data.model;
+package cl.injcristianrojas.data.jpa.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +21,6 @@ public class AppUser {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
-    
 
     public String getUsername() {
         return username;

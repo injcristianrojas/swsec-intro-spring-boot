@@ -1,7 +1,7 @@
-package cl.injcristianrojas.data.service;
+package cl.injcristianrojas.data.jpa.service;
 
-import cl.injcristianrojas.data.repositories.AppUserRepository;
-import cl.injcristianrojas.data.model.AppUser;
+import cl.injcristianrojas.data.jpa.repositories.AppUserRepository;
+import cl.injcristianrojas.data.jpa.model.AppUser;
 import cl.injcristianrojas.security.MainUserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

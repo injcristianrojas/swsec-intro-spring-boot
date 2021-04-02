@@ -18,7 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.context.WebApplicationContext;
 
-import cl.injcristianrojas.data.service.MainUserDetailsService;
+import cl.injcristianrojas.data.jpa.service.MainUserDetailsService;
 
 @SuppressWarnings("deprecation")
 @EnableWebSecurity
