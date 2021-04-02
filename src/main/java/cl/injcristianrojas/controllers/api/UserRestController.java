@@ -1,5 +1,7 @@
 package cl.injcristianrojas.controllers.api;
 
+import cl.injcristianrojas.data.jdbc.model.UserJDBC;
+import cl.injcristianrojas.data.jdbc.service.UserService;
 import cl.injcristianrojas.data.jpa.model.User;
 import cl.injcristianrojas.data.jpa.repositories.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,15 +16,17 @@ public class UserRestController {
 
     @Autowired
     private AppUserRepository userRepo;
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/api/users")
-    public List<User> retrieveAllUsers() {
-        return userRepo.findAll();
+    public List<UserJDBC> retrieveAllUsers() {
+        return userService.findAll();
     }
 
     @GetMapping("/api/users/user/{username}")
-    public List<User> showUsersByUserName(@PathVariable String username) {
-        return userRepo.getUsersByUsername(username);
+    public List<UserJDBC> showUsersByUserName(@PathVariable String username) {
+        return userService.getUsersByUsername(username);
     }
 
 }
