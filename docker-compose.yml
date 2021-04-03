@@ -9,6 +9,14 @@ services:
     volumes:
       -  ./target/webapps:/usr/local/tomcat/webapps/
 
+  jenkins:
+    build:
+      context: .
+      dockerfile: jenkins.dockerfile
+    ports:
+      - "8090:8080"
+      - "50000:50000"
+
   #sonarqube:
   #  build:
   #    context: .
