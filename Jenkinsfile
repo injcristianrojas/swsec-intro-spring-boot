@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Webapp server launch') {
             steps {
-                sh 'mvn jetty:run-forked'
+                sh 'mvn spring-boot:start'
             }
         }
 
@@ -37,7 +37,7 @@ pipeline {
 
     post {
         always {
-            sh 'mvn jetty:stop'
+            sh 'mvn spting-boot:start'
         }
         success {
             script {
