@@ -16,19 +16,19 @@ import cl.injcristianrojas.data.jpa.repositories.AppUserRepositoryCustom;
 @Transactional
 public class AppUserRepositoryCustomImpl implements AppUserRepositoryCustom {
 
-	@PersistenceContext
-	EntityManager entityManager;
-	
-	@Override
-	public List<UserJPA> getUsersByUsername(String username) {
-		TypedQuery<UserJPA> query = entityManager.createQuery("from UserJPA where username = ?1", UserJPA.class);
-		return query.setParameter(1, username).getResultList();
-	}
+    @PersistenceContext
+    EntityManager entityManager;
 
-	@Override
-	public List<UserJPA> getUsersByType(String type) {
-		TypedQuery<UserJPA> query = entityManager.createQuery("from UserJPA where role_id = " + type, UserJPA.class);
-		return query.getResultList();
-	}
+    @Override
+    public List<UserJPA> getUsersByUsername(String username) {
+        TypedQuery<UserJPA> query = entityManager.createQuery("from UserJPA where username = '" + username + "'", UserJPA.class);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<UserJPA> getUsersByType(String type) {
+        TypedQuery<UserJPA> query = entityManager.createQuery("from UserJPA where role_id = " + type, UserJPA.class);
+        return query.getResultList();
+    }
 
 }
