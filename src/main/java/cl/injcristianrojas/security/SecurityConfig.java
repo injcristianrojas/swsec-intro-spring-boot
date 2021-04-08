@@ -79,18 +79,13 @@ public class SecurityConfig {
 		
 		@Override
 	    protected void configure(HttpSecurity http) throws Exception {
-	        http.
-	        		antMatcher("/api/**")
-	        		.cors()
-	        		.and()
-	        		.csrf()
-	        		.disable();
-	    }
-		
-		@Override
-        public void configure(WebSecurity web) throws Exception {
-            super.configure(web);
-        }
+			http.
+					antMatcher("/api/**")
+					.cors()
+					.and()
+					.csrf()
+					.disable();
+		}
 		
 	}
 	

@@ -20,7 +20,7 @@ public class PostServiceJDBC {
 
     public PostJDBC save(PostJDBC postJDBC) {
         jdbcTemplate.batchUpdate("INSERT INTO posts(message) VALUES ('" + postJDBC.getMessage() + "')");
-        return jdbcTemplate.queryForObject("SELECT * FROM posts WHERE message = '" + postJDBC.getMessage() + "'", (rs, RowNum) -> new PostJDBC(rs.getLong("id"), rs.getString("message")));
+        return jdbcTemplate.queryForObject("SELECT * FROM posts WHERE message = '" + postJDBC.getMessage() + "'", (rs, rowNum) -> new PostJDBC(rs.getLong("id"), rs.getString("message")));
     }
 
 }

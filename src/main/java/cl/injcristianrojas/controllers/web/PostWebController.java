@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class PostWebController {
 
+    private static final String POSTS = "posts";
+
     @Autowired
     private PostRepository repo;
 
@@ -20,13 +22,13 @@ public class PostWebController {
     	PostJPA post = new PostJPA();
     	post.setMessage(message);
     	repo.save(post);
-    	model.addAttribute("posts", repo.findAll());
-    	return "posts";
+    	model.addAttribute(POSTS, repo.findAll());
+    	return POSTS;
     }
 
     @GetMapping("/posts")
     public String showPosts(Model model) {
-        model.addAttribute("posts", repo.findAll());
-        return "posts";
+        model.addAttribute(POSTS, repo.findAll());
+        return POSTS;
     }
 }
