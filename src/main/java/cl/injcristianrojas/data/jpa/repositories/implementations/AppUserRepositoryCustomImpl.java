@@ -21,13 +21,13 @@ public class AppUserRepositoryCustomImpl implements AppUserRepositoryCustom {
 	
 	@Override
 	public List<UserJPA> getUsersByUsername(String username) {
-		TypedQuery<UserJPA> query = entityManager.createQuery("from AppUser where username = '" + username + "'", UserJPA.class);
-		return query.getResultList();
+		TypedQuery<UserJPA> query = entityManager.createQuery("from UserJPA where username = ?1", UserJPA.class);
+		return query.setParameter(1, username).getResultList();
 	}
 
 	@Override
 	public List<UserJPA> getUsersByType(String type) {
-		TypedQuery<UserJPA> query = entityManager.createQuery("from AppUser where role_id = " + type, UserJPA.class);
+		TypedQuery<UserJPA> query = entityManager.createQuery("from UserJPA where role_id = " + type, UserJPA.class);
 		return query.getResultList();
 	}
 
