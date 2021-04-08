@@ -25,7 +25,7 @@ public class ApiTests {
 		this.mvc.perform(get("/api/users"))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$[1].id", is(2)))
-				.andExpect(jsonPath("$[1].username", is("jperez")));
+				.andExpect(jsonPath("$[1].username", is("lhamilton")));
 				
 	}
 	

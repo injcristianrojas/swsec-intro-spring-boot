@@ -32,7 +32,7 @@ public class WebTests {
 	public void testLogin() throws Exception {
 		RequestBuilder requestBuilder = post("/login")
 				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
-	            .param("username", "jperez")
+	            .param("username", "lhamilton")
 	            .param("password", "123")
 	            .with(csrf());
 		this.mvc.perform(requestBuilder)
