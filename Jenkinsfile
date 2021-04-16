@@ -37,7 +37,7 @@ pipeline {
 
     post {
         always {
-            sh 'mvn spting-boot:start'
+            sh 'mvn spring-boot:start'
         }
         success {
             script {
