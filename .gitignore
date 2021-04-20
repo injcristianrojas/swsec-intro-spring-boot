@@ -7,3 +7,4 @@ target/*
 .attach*
 .vscode*
 *.properties
+*.iml
