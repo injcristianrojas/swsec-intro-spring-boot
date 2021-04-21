@@ -10,7 +10,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <start-class>cl.injcristianrojas.SpringBootTomcatApplication</start-class>
+        <start-class>cl.injcristianrojas.SpringBootApplication</start-class>
         <sonar.dependencyCheck.reportPath>target/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
         <sonar.dependencyCheck.htmlReportPath>target/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
         <sonar.zaproxy.reportPath>target/zap-reports/zapReport.xml</sonar.zaproxy.reportPath>
@@ -77,22 +77,18 @@
             <version>3.0.4.RELEASE</version>
         </dependency>
 
-        <!-- Tomcat -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
 
     <build>
 
         <finalName>webapps/ROOT</finalName>
 
+        <!--
         <defaultGoal>
             compile spotbugs:spotbugs org.owasp:dependency-check-maven:check spring-boot:start
             de.martinreinhardt-online:zap-maven-plugin:analyze spring-boot:stop sonar:sonar
         </defaultGoal>
+        -->
 
         <plugins>
 
