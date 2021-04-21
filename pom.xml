@@ -42,8 +42,8 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
-        	<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -62,12 +62,12 @@
             <artifactId>h2</artifactId>
             <version>1.4.177</version>
         </dependency>
-        
+
         <!-- JWT -->
         <dependency>
-        	<groupId>com.auth0</groupId>
-        	<artifactId>java-jwt</artifactId>
-        	<version>3.4.0</version>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.4.0</version>
         </dependency>
 
         <!-- Thymeleaf Security -->
@@ -85,35 +85,36 @@
         </dependency>
     </dependencies>
 
-	<build>
+    <build>
 
         <finalName>webapps/ROOT</finalName>
 
         <defaultGoal>
-        compile spotbugs:spotbugs org.owasp:dependency-check-maven:check spring-boot:start de.martinreinhardt-online:zap-maven-plugin:analyze spring-boot:stop sonar:sonar
+            compile spotbugs:spotbugs org.owasp:dependency-check-maven:check spring-boot:start
+            de.martinreinhardt-online:zap-maven-plugin:analyze spring-boot:stop sonar:sonar
         </defaultGoal>
 
-		<plugins>
+        <plugins>
 
-        <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>properties-maven-plugin</artifactId>
-            <version>1.0.0</version>
-            <executions>
-                <execution>
-                    <phase>initialize</phase>
-                    <goals>
-                        <goal>read-project-properties</goal>
-                    </goals>
-                    <configuration>
-                    <files>
-                        <file>main.properties</file>
-                    </files>
-                    </configuration>
-                </execution>
-            </executions>
-        </plugin>
-            
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>main.properties</file>
+                            </files>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -138,13 +139,13 @@
             </plugin>
 
             <plugin>
-				<groupId>org.owasp</groupId>
-				<artifactId>dependency-check-maven</artifactId>
-				<version>6.1.5</version>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>6.1.5</version>
                 <configuration>
                     <formats>HTML,XML</formats>
                 </configuration>
-			</plugin>
+            </plugin>
 
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
@@ -161,49 +162,51 @@
                     <zapPort>9091</zapPort>
                     <targetUrl>http://localhost:8080/</targetUrl>
                     <authenticationType>form</authenticationType>
-                        <username>jperez</username>
-                        <password>123</password>
-                        <loginUrl>http://localhost:8080/login</loginUrl>
-                        <loggedInRegex><![CDATA[\QUsuario: <span>jperez</span>\E]]></loggedInRegex>
-                        <loggedOutRegex><![CDATA[\Q<a title="Ingresar" id="exit" href="/login">\E]]></loggedOutRegex>
-                    <zapOptions>-daemon -config scanner.strength=INSANE -config api.disablekey=true -config api.incerrordetails=true</zapOptions>
+                    <username>jperez</username>
+                    <password>123</password>
+                    <loginUrl>http://localhost:8080/login</loginUrl>
+                    <loggedInRegex><![CDATA[\QUsuario: <span>jperez</span>\E]]></loggedInRegex>
+                    <loggedOutRegex><![CDATA[\Q<a title="Ingresar" id="exit" href="/login">\E]]></loggedOutRegex>
+                    <zapOptions>-daemon -config scanner.strength=INSANE -config api.disablekey=true -config
+                        api.incerrordetails=true
+                    </zapOptions>
                 </configuration>
             </plugin>
 
-		</plugins>
-	</build>
+        </plugins>
+    </build>
 
-	<reporting>
-		<plugins>
+    <reporting>
+        <plugins>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-site-plugin</artifactId>
-				<version>3.9.1</version>
-			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.9.1</version>
+            </plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>3.1.1</version>
-			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.1.1</version>
+            </plugin>
 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>versions-maven-plugin</artifactId>
-				<version>2.8.1</version>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>dependency-updates-report</report>
-							<report>plugin-updates-report</report>
-							<report>property-updates-report</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.8.1</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>dependency-updates-report</report>
+                            <report>plugin-updates-report</report>
+                            <report>property-updates-report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
 
-		</plugins>
-	</reporting>
+        </plugins>
+    </reporting>
 
 </project>
