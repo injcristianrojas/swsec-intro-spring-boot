@@ -3,7 +3,7 @@
 # Requirements
 
 * An IDE that supports Maven (Eclipse, IntelliJ IDEA, Visual Studio Code...)
-* Java SDK 11
+* Java SDK 8
 * OWASP ZAP
 * Sonarqube
 * Docker (optional)
