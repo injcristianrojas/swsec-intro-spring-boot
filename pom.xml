@@ -141,8 +141,6 @@
                 <version>${owasp.dependencycheck.version}</version>
                 <configuration>
                     <formats>HTML,XML</formats>
-                    <cveUrlModified>https://freedumbytes.gitlab.io/setup/nist-nvd-mirror/nvdcve-1.1-modified.json.gz</cveUrlModified>
-                    <cveUrlBase>https://freedumbytes.gitlab.io/setup/nist-nvd-mirror/nvdcve-1.1-%d.json.gz</cveUrlBase>
                 </configuration>
             </plugin>
 
@@ -197,10 +195,6 @@
                 <groupId>org.owasp</groupId>
                 <artifactId>dependency-check-maven</artifactId>
                 <version>${owasp.dependencycheck.version}</version>
-                <configuration>
-                    <cveUrlModified>https://freedumbytes.gitlab.io/setup/nist-nvd-mirror/nvdcve-1.1-modified.json.gz</cveUrlModified>
-                    <cveUrlBase>https://freedumbytes.gitlab.io/setup/nist-nvd-mirror/nvdcve-1.1-%d.json.gz</cveUrlBase>
-                </configuration>
                 <reportSets>
                     <reportSet>
                         <reports>
