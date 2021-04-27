@@ -31,6 +31,8 @@ dependencies {
 
 spotbugs {
     ignoreFailures = true
+    effort = 'max'
+    reportLevel = 'medium'
     tasks.spotbugsMain {
         reports.create("html")
     }
