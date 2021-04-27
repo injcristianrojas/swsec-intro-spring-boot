@@ -1,10 +1,14 @@
 .idea/*
 target/*
-.classpath
-.project
 .settings/*
+build/*
+.gradle/*
+gradle/*
+.scans/*
 .sts4*
 .attach*
 .vscode*
+.classpath
+.project
 *.properties
 *.iml
