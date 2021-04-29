@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cl.injcristianrojas</groupId>
@@ -15,6 +13,7 @@
         <sonar.dependencyCheck.htmlReportPath>target/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
         <sonar.zaproxy.reportPath>target/zap-reports/zapReport.xml</sonar.zaproxy.reportPath>
         <owasp.dependencycheck.version>6.1.5</owasp.dependencycheck.version>
+        <spotbugs.version>4.2.2</spotbugs.version>
     </properties>
 
     <parent>
@@ -120,11 +119,11 @@
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>4.2.2</version>
+                <version>${spotbugs.version}</version>
                 <configuration>
                     <xmlOutput>true</xmlOutput>
                     <effort>Max</effort>
-                    <threshold>Low</threshold>
+                    <threshold>Medium</threshold>
                     <failOnError>false</failOnError>
                     <plugins>
                         <plugin>
@@ -163,8 +162,12 @@
                     <username>jperez</username>
                     <password>123</password>
                     <loginUrl>http://localhost:8080/login</loginUrl>
-                    <loggedInRegex><![CDATA[\QUsuario: <span>jperez</span>\E]]></loggedInRegex>
-                    <loggedOutRegex><![CDATA[\Q<a title="Ingresar" id="exit" href="/login">\E]]></loggedOutRegex>
+                    <loggedInRegex>
+                        <![CDATA[\QUsuario: <span>jperez</span>\E]]>
+                    </loggedInRegex>
+                    <loggedOutRegex>
+                        <![CDATA[\Q<a title="Ingresar" id="exit" href="/login">\E]]>
+                    </loggedOutRegex>
                     <zapOptions>-daemon -config scanner.strength=INSANE -config api.disablekey=true -config
                         api.incerrordetails=true
                     </zapOptions>
@@ -204,6 +207,37 @@
                     </reportSet>
                 </reportSets>
             </plugin>
+
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>${spotbugs.version}</version>
+                <configuration>
+                    <effort>Max</effort>
+                    <threshold>Medium</threshold>
+                    <spotbugsXmlOutput>true</spotbugsXmlOutput>
+                    <spotbugsXmlOutputDirectory>target/site</spotbugsXmlOutputDirectory>
+                    <skipEmptyReport>false</skipEmptyReport>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <includeTests>true</includeTests>
+                    <classFilesDirectory>${project.build.outputDirectory}</classFilesDirectory>
+                    <plugins>
+                        <plugin>
+                            <groupId>com.h3xstream.findsecbugs</groupId>
+                            <artifactId>findsecbugs-plugin</artifactId>
+                            <version>LATEST</version>
+                        </plugin>
+                    </plugins>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>spotbugs</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
 
         </plugins>
     </reporting>
