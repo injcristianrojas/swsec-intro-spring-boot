@@ -17,10 +17,10 @@ services:
       - "8090:8080"
       - "50000:50000"
 
-  #sonarqube:
-  #  build:
-  #    context: .
-  #    dockerfile: sonarqube.dockerfile
-  #  ports:
-  #    - "9090:9090"
-  #   - "9000:9000"
+  sonarqube:
+    build:
+      context: .
+      dockerfile: sonarqube.dockerfile
+    ports:
+      - "9090:9090"
+      - "9000:9000"
