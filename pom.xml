@@ -122,6 +122,7 @@
                 <artifactId>spotbugs-maven-plugin</artifactId>
                 <version>4.2.2</version>
                 <configuration>
+                    <xmlOutput>true</xmlOutput>
                     <effort>Max</effort>
                     <threshold>Low</threshold>
                     <failOnError>false</failOnError>
