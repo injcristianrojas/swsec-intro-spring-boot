@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Preparation') {
             steps {
-                git branch: 'jenkins', url: 'https://github.com/injcristianrojas/swsec-intro-spring-boot.git'
+                git url: 'https://github.com/injcristianrojas/swsec-intro-spring-boot.git'
             }
         }
         stage('Webapp build') {
@@ -22,12 +22,16 @@ pipeline {
                 sh 'mvn -Dformat=XML org.owasp:dependency-check-maven:check'
             }
         }
+        stage('OWASP ZAP proxy analyzer launch') {
+            steps {
+                sh '/opt/zaproxy/zap.sh -daemon -port 8989 -host 0.0.0.0 -config api.addrs.addr.name=.* -config api.addrs.addr.regex=true -config api.disablekey=true -config scanner.strength=INSANE &'
+            }
+        }
         stage('Webapp server launch') {
             steps {
                 sh 'mvn spring-boot:start'
             }
         }
-
         stage('OWASP ZAP (DAST)') {
             steps {
                 sh 'mvn de.martinreinhardt-online:zap-maven-plugin:analyze'
@@ -37,7 +41,7 @@ pipeline {
 
     post {
         always {
-            sh 'mvn spring-boot:start'
+            sh 'mvn spring-boot:stop'
         }
         success {
             script {
