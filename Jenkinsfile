@@ -41,7 +41,8 @@ pipeline {
 
     post {
         always {
-            sh 'mvn spring-boot:stop'
+            sh 'mvn spring-boot:stop -Dspring-boot.stop.fork'
+            sh 'curl http://localhost:8989/JSON/core/action/shutdown/'
         }
         success {
             script {
