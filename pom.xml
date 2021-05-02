@@ -93,25 +93,6 @@
         <plugins>
 
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>properties-maven-plugin</artifactId>
-                <version>1.0.0</version>
-                <executions>
-                    <execution>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>read-project-properties</goal>
-                        </goals>
-                        <configuration>
-                            <files>
-                                <file>main.properties</file>
-                            </files>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
@@ -155,8 +136,8 @@
                 <artifactId>zap-maven-plugin</artifactId>
                 <version>0.1.0</version>
                 <configuration>
-                    <zapPath>${zap.location}</zapPath>
-                    <zapPort>9091</zapPort>
+                    <zapHost>localhost</zapHost>
+                    <zapPort>8989</zapPort>
                     <targetUrl>http://localhost:8080/</targetUrl>
                     <authenticationType>form</authenticationType>
                     <username>jperez</username>
@@ -168,9 +149,6 @@
                     <loggedOutRegex>
                         <![CDATA[\Q<a title="Ingresar" id="exit" href="/login">\E]]>
                     </loggedOutRegex>
-                    <zapOptions>-daemon -config scanner.strength=INSANE -config api.disablekey=true -config
-                        api.incerrordetails=true
-                    </zapOptions>
                 </configuration>
             </plugin>
 
