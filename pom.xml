@@ -8,7 +8,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <start-class>cl.injcristianrojas.SpringBootApplication</start-class>
+        <start-class>cl.injcristianrojas.AvesChilenasApplication</start-class>
         <sonar.dependencyCheck.reportPath>target/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
         <sonar.dependencyCheck.htmlReportPath>target/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
         <sonar.zaproxy.reportPath>target/zap-reports/zapReport.xml</sonar.zaproxy.reportPath>
@@ -19,7 +19,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.0.RELEASE</version>
+        <version>2.1.4.RELEASE</version>
     </parent>
 
     <dependencies>
