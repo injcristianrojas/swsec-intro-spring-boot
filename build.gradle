@@ -38,7 +38,3 @@ spotbugs {
         reports.create("html")
     }
 }
-
-dependencyLocking {
-    lockAllConfigurations()
-}
