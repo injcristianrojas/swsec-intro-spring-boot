@@ -1,0 +1,13 @@
+package cl.injcristianrojas;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class AvesChilenasApplication {
+	
+    public static void main(String[] args) {
+        SpringApplication.run(AvesChilenasApplication.class, args);
+    }
+
+}

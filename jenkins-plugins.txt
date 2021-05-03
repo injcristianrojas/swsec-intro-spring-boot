@@ -1,5 +1,0 @@
-dependency-check-jenkins-plugin:latest
-locale:latest
-warnings-ng:latest
-zap:latest
-dependency-track:latest
