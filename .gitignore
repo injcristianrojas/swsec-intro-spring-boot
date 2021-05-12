@@ -9,5 +9,6 @@ logs/*
 target/*
 .classpath
 .project
+.dccache
 *.iml
 *.properties
