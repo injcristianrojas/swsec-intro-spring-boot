@@ -6,8 +6,9 @@ bin/*
 build/*
 logs/*
 target/*
+out/*
 .classpath
 .project
+.dccache
 *.iml
 *.properties
-out/*
