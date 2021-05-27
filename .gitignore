@@ -5,3 +5,9 @@ target/*
 .settings/*
 .sts4*
 .attach_*
+.dccache
+.gradle/*
+.vscode/*
+bin/*
+build/*
+logs/*
