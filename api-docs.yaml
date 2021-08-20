@@ -1,3 +1,5 @@
+# Generated using org.springdoc:springdoc-openapi-webmvc-core:1.5.10
+
 openapi: 3.0.1
 info:
   title: OpenAPI definition
