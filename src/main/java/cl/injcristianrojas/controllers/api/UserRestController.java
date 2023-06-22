@@ -15,12 +15,12 @@ public class UserRestController {
     @Autowired
     private UserServiceJDBC userService;
 
-    @GetMapping("/api/users")
+    @GetMapping("/api/v1/users")
     public List<UserJDBC> retrieveAllUsers() {
         return userService.findAll();
     }
 
-    @GetMapping("/api/users/user/{username}")
+    @GetMapping("/api/v1/users/user/{username}")
     public List<UserJDBC> showUsersByUserName(@PathVariable String username) {
         return userService.getUsersByUsername(username);
     }
