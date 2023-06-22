@@ -14,3 +14,9 @@ spring:
     console:
       enabled: true
       path: /h2
+
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: /api/api-docs
