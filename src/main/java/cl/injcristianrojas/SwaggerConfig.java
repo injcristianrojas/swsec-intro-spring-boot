@@ -25,8 +25,8 @@ public class SwaggerConfig {
 
   private ApiInfo apiInfo() {
     return new ApiInfoBuilder()
-        .title("Your Project API")
-        .description("API documentation for Your Project")
+        .title("Fans de las Aves Chilenas API")
+        .description("API documentation for Fans de las Aves Chilenas")
         .version("1.0.0")
         .build();
   }
