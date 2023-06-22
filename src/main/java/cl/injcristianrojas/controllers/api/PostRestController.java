@@ -16,12 +16,12 @@ public class PostRestController {
     @Autowired
     private PostServiceJDBC postService;
 
-    @GetMapping("/api/v1/posts")
+    @GetMapping("/api/v2/posts")
     public List<PostJDBC> retrieveAllPosts() {
         return postService.findAll();
     }
 
-    @PostMapping("/api/v1/posts/add")
+    @PostMapping("/api/v2/posts/add")
     public PostJDBC newPost(@RequestBody PostJDBC newPost){
         return postService.save(newPost);
     }

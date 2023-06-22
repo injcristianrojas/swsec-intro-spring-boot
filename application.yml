@@ -19,4 +19,4 @@ springfox:
   documentation:
     swagger:
       v2:
-        path: /api/v1/api-docs
+        path: /api/v2/api-docs

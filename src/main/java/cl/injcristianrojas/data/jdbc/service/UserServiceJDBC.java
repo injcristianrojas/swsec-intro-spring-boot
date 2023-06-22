@@ -15,10 +15,10 @@ public class UserServiceJDBC {
     JdbcTemplate jdbcTemplate;
 
     public List<UserJDBC> getUsersByUsername(String username) {
-        return new ArrayList<>(jdbcTemplate.query("SELECT * FROM users WHERE username = '" + username + "'", (rs, rowNum) -> new UserJDBC(rs.getLong("id"), rs.getString("username"), rs.getString("password"), rs.getBoolean("enabled"))));
+        return new ArrayList<>(jdbcTemplate.query("SELECT * FROM users WHERE username = '" + username + "'", (rs, rowNum) -> new UserJDBC(rs.getLong("id"), rs.getString("username"), rs.getBoolean("enabled"))));
     }
 
     public List<UserJDBC> findAll() {
-        return new ArrayList<>(jdbcTemplate.query("SELECT * FROM users", (rs, rowNum) -> new UserJDBC(rs.getLong("id"), rs.getString("username"), rs.getString("password"), rs.getBoolean("enabled"))));
+        return new ArrayList<>(jdbcTemplate.query("SELECT * FROM users", (rs, rowNum) -> new UserJDBC(rs.getLong("id"), rs.getString("username"), rs.getBoolean("enabled"))));
     }
 }
