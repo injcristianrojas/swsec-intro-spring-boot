@@ -18,7 +18,7 @@ public class SwaggerConfig {
     return new Docket(DocumentationType.SWAGGER_2)
         .select()
         .apis(RequestHandlerSelectors.basePackage("cl.injcristianrojas.controllers.api"))
-        .paths(PathSelectors.any())
+        .paths(PathSelectors.regex("^/api/v2/.*$"))
         .build()
         .apiInfo(apiInfo());
   }
@@ -27,7 +27,7 @@ public class SwaggerConfig {
     return new ApiInfoBuilder()
         .title("Fans de las Aves Chilenas API")
         .description("API documentation for Fans de las Aves Chilenas")
-        .version("1.0.0")
+        .version("v2")
         .build();
   }
 }
