@@ -42,10 +42,10 @@ public class InitialDataProvisioner implements ApplicationListener<ContextRefres
 		createRoleIfNotFound(ROLE_USER);
 		
 		createUser("admin", "admin", ROLE_ADMIN);
-		createUser("lhamilton", "123", ROLE_USER);
-		createUser("mverstappen", "123", ROLE_USER);
-		createUser("svettel", "123", ROLE_USER);
-		createUser("falonso", "123", ROLE_USER);
+		createUser("lhamilton", "roscoe", ROLE_USER);
+		createUser("mverstappen", "jos", ROLE_USER);
+		createUser("driccardo", "shoey", ROLE_USER);
+		createUser("falonso", "alwayshavetoleavethespace", ROLE_USER);
 		
 		createPost("Bienvenidos a Fans de las Aves Chilenas. Soy el administrador.");
 	}
