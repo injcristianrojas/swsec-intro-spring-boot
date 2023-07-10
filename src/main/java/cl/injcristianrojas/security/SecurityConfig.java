@@ -6,7 +6,6 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -49,7 +48,7 @@ public class SecurityConfig {
 
 		@Override
 		public void configure(WebSecurity web) throws Exception {
-			web.ignoring().antMatchers("/css/**", "/images/**", "/h2/**");
+			web.ignoring().antMatchers("/css/**", "/images/**", "/h2/**", "/api/**", "/error");
 		}
 
 		@Override
@@ -71,22 +70,6 @@ public class SecurityConfig {
 			return NoOpPasswordEncoder.getInstance();
 		}
 
-	}
-
-	@Order(1)
-	@Configuration
-	public static class ApiSecurityConfig extends WebSecurityConfigurerAdapter {
-		
-		@Override
-	    protected void configure(HttpSecurity http) throws Exception {
-			http.
-					antMatcher("/api/**")
-					.cors()
-					.and()
-					.csrf()
-					.disable();
-		}
-		
 	}
 	
 }
