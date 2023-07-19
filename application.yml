@@ -16,8 +16,6 @@ spring:
       path: /h2
       url: jdbc:h2:mem:testdb
 
-springfox:
-  documentation:
-    swagger:
-      v2:
-        path: /api/v2/api-docs
+springdoc:
+  api-docs:
+    path: /api/v2/api-docs
