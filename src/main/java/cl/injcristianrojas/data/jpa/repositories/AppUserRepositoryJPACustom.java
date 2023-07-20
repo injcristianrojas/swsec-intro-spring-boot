@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import cl.injcristianrojas.data.jpa.model.UserJPA;
 
 @Repository
-public interface AppUserRepositoryCustom {
+public interface AppUserRepositoryJPACustom {
     List<UserJPA> getUsersByUsername(String username);
     List<UserJPA> getUsersByType(String type);
 }

@@ -1,6 +1,6 @@
 package cl.injcristianrojas.data.jpa.service;
 
-import cl.injcristianrojas.data.jpa.repositories.AppUserRepository;
+import cl.injcristianrojas.data.jpa.repositories.AppUserRepositoryJPA;
 import cl.injcristianrojas.data.jpa.model.UserJPA;
 import cl.injcristianrojas.security.MainUserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class MainUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private AppUserRepository userRepository;
+    private AppUserRepositoryJPA userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

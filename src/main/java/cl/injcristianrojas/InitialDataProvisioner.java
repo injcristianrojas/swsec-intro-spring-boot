@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
 import cl.injcristianrojas.data.jpa.model.PostJPA;
 import cl.injcristianrojas.data.jpa.model.RoleJPA;
 import cl.injcristianrojas.data.jpa.model.UserJPA;
-import cl.injcristianrojas.data.jpa.repositories.PostRepository;
-import cl.injcristianrojas.data.jpa.repositories.RoleRepository;
-import cl.injcristianrojas.data.jpa.repositories.AppUserRepository;
+import cl.injcristianrojas.data.jpa.repositories.PostRepositoryJPA;
+import cl.injcristianrojas.data.jpa.repositories.RoleRepositoryJPA;
+import cl.injcristianrojas.data.jpa.repositories.AppUserRepositoryJPA;
 
 @Component
 public class InitialDataProvisioner implements ApplicationListener<ContextRefreshedEvent> {
@@ -21,13 +21,13 @@ public class InitialDataProvisioner implements ApplicationListener<ContextRefres
 	boolean alreadySetup = false;
 
 	@Autowired
-	private AppUserRepository userRepository;
+	private AppUserRepositoryJPA userRepository;
 	
 	@Autowired
-	private RoleRepository roleRepository;
+	private RoleRepositoryJPA roleRepository;
 	
 	@Autowired
-	private PostRepository postRepository;
+	private PostRepositoryJPA postRepository;
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import cl.injcristianrojas.data.jpa.model.UserJPA;
 
 @Repository
-public interface AppUserRepository extends JpaRepository<UserJPA, Long>, AppUserRepositoryCustom {
+public interface AppUserRepositoryJPA extends JpaRepository<UserJPA, Long>, AppUserRepositoryJPACustom {
     UserJPA findByUsername(String username);
 }

@@ -3,7 +3,7 @@ package cl.injcristianrojas.controllers.api;
 import cl.injcristianrojas.data.jdbc.model.UserJDBC;
 import cl.injcristianrojas.data.jdbc.service.UserServiceJDBC;
 import cl.injcristianrojas.data.jpa.model.UserJPA;
-import cl.injcristianrojas.data.jpa.repositories.AppUserRepository;
+import cl.injcristianrojas.data.jpa.repositories.AppUserRepositoryJPA;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +18,7 @@ public class UserRestController {
     @Autowired
     private UserServiceJDBC userServiceJDBC;
     @Autowired
-    private AppUserRepository userRepoJPA;
+    private AppUserRepositoryJPA userRepoJPA;
 
     @GetMapping("/api/v1/users")
     public List<UserJPA> retrieveAllUsers() {

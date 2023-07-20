@@ -7,16 +7,16 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import cl.injcristianrojas.data.jpa.model.UserJPA;
-import cl.injcristianrojas.data.jpa.repositories.AppUserRepository;
+import cl.injcristianrojas.data.jpa.repositories.AppUserRepositoryJPA;
 
 import static java.util.Collections.emptyList;
 
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
 
-	private AppUserRepository applicationUserRepository;
+	private AppUserRepositoryJPA applicationUserRepository;
 
-    public JwtUserDetailsService(AppUserRepository applicationUserRepository) {
+    public JwtUserDetailsService(AppUserRepositoryJPA applicationUserRepository) {
         this.applicationUserRepository = applicationUserRepository;
     }
     

@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cl.injcristianrojas.data.jpa.model.UserJPA;
-import cl.injcristianrojas.data.jpa.repositories.AppUserRepository;
+import cl.injcristianrojas.data.jpa.repositories.AppUserRepositoryJPA;
 
 @SuppressWarnings("deprecation")
 @RestController
 @RequestMapping("/api/v1")
 public class AppUserController {
 
-	private AppUserRepository applicationUserRepository;
+	private AppUserRepositoryJPA applicationUserRepository;
 	private PasswordEncoder passwordEncoder;
 
-	public AppUserController(AppUserRepository applicationUserRepository) {
+	public AppUserController(AppUserRepositoryJPA applicationUserRepository) {
 		this.applicationUserRepository = applicationUserRepository;
 		this.passwordEncoder = NoOpPasswordEncoder.getInstance();
 	}

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PostRepository extends JpaRepository<PostJPA, Long> {
+public interface PostRepositoryJPA extends JpaRepository<PostJPA, Long> {
     List<PostJPA> findAll();
     <S extends PostJPA> S save(S s);
 }

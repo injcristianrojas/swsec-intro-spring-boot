@@ -14,15 +14,15 @@ import java.util.List;
 public class PostRestController {
 
     @Autowired
-    private PostServiceJDBC postService;
+    private PostServiceJDBC postServiceJDBC;
 
     @GetMapping("/api/v2/posts")
     public List<PostJDBC> retrieveAllPosts() {
-        return postService.findAll();
+        return postServiceJDBC.findAll();
     }
 
     @PostMapping("/api/v2/posts/add")
     public PostJDBC newPost(@RequestBody PostJDBC newPost){
-        return postService.save(newPost);
+        return postServiceJDBC.save(newPost);
     }
 }

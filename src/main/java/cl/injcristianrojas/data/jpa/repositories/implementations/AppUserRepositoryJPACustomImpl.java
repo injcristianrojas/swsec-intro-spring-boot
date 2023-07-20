@@ -10,11 +10,11 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import cl.injcristianrojas.data.jpa.model.UserJPA;
-import cl.injcristianrojas.data.jpa.repositories.AppUserRepositoryCustom;
+import cl.injcristianrojas.data.jpa.repositories.AppUserRepositoryJPACustom;
 
 @Repository
 @Transactional
-public class AppUserRepositoryCustomImpl implements AppUserRepositoryCustom {
+public class AppUserRepositoryJPACustomImpl implements AppUserRepositoryJPACustom {
 
 	@PersistenceContext
 	EntityManager entityManager;

@@ -1,7 +1,7 @@
 package cl.injcristianrojas.controllers.web;
 
 import cl.injcristianrojas.data.jpa.model.PostJPA;
-import cl.injcristianrojas.data.jpa.repositories.PostRepository;
+import cl.injcristianrojas.data.jpa.repositories.PostRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class PostWebController {
 
     @Autowired
-    private PostRepository repo;
+    private PostRepositoryJPA repo;
 
     @PostMapping("/posts")
     public String createPost(@RequestParam("message") String message, Model model) {
