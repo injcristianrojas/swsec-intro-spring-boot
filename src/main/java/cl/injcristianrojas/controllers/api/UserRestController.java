@@ -10,13 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
 public class UserRestController {
 
     @Autowired
     private AppUserRepository userRepo;
 
-    @GetMapping("/users")
+    @GetMapping("/api/v1/users")
     public List<UserJPA> retrieveAllUsers() {
         return userRepo.findAll();
     }
