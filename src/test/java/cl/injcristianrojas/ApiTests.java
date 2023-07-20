@@ -29,18 +29,18 @@ public class ApiTests {
 	
 	@Before
 	public void setUp() throws Exception {
-		MvcResult result = this.mvc.perform(post("/api/login").param("Content-Type", "application/json").content("{ \"username\": \"jperez\", \"password\": \"123\"}")).andReturn();
+		MvcResult result = this.mvc.perform(post("/api/v1/login").param("Content-Type", "application/json").content("{ \"username\": \"jperez\", \"password\": \"123\"}")).andReturn();
 		jwtToken = result.getResponse().getHeader("Authorization").replace(TOKEN_PREFIX, "");
 	}
 	
 	@Test
     public void shouldNotAllowAccessToUnauthenticatedUsers() throws Exception {
-        this.mvc.perform(get("/api/users")).andExpect(status().isForbidden());
+        this.mvc.perform(get("/api/v1/users")).andExpect(status().isForbidden());
     }
 
 	@Test
 	public void testUsers() throws Exception {
-		this.mvc.perform(get("/api/users").header("Authorization", TOKEN_PREFIX + jwtToken))
+		this.mvc.perform(get("/api/v1/users").header("Authorization", TOKEN_PREFIX + jwtToken))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$[1].id", is(2)))
 				.andExpect(jsonPath("$[1].username", is("jperez")));
@@ -49,7 +49,7 @@ public class ApiTests {
 	
 	@Test
 	public void testPosts() throws Exception {
-		this.mvc.perform(get("/api/posts").header("Authorization", TOKEN_PREFIX + jwtToken))
+		this.mvc.perform(get("/api/v1/posts").header("Authorization", TOKEN_PREFIX + jwtToken))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$[0].id", is(1)))
 				.andExpect(jsonPath("$[0].message", is("Holi")));

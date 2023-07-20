@@ -12,7 +12,7 @@ import cl.injcristianrojas.data.repositories.AppUserRepository;
 
 @SuppressWarnings("deprecation")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1")
 public class AppUserController {
 
 	private AppUserRepository applicationUserRepository;
