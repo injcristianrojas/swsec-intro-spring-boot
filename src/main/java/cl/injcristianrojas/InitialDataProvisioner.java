@@ -19,6 +19,8 @@ import cl.injcristianrojas.data.jpa.repositories.AppUserRepositoryJPA;
 public class InitialDataProvisioner implements ApplicationListener<ContextRefreshedEvent> {
 
 	boolean alreadySetup = false;
+	private static final String ROLE_ADMIN = "ROLE_ADMIN";
+	private static final String ROLE_USER = "ROLE_USER";
 
 	@Autowired
 	private AppUserRepositoryJPA userRepository;
@@ -38,14 +40,14 @@ public class InitialDataProvisioner implements ApplicationListener<ContextRefres
 			return;
 		createRoleIfNotFound("ROLE_ADMIN");
 		createRoleIfNotFound("ROLE_USER");
-		
-		createUser("admin", "admin", "ROLE_ADMIN");
-		createUser("jperez", "123", "ROLE_USER");
-		createUser("jbolsonaro", "j", "ROLE_USER");
-		createUser("dtrump", "great", "ROLE_USER");
-		
-		createPost("Holi");
-		createPost("Andai soli");
+
+		createUser("admin", "admin", ROLE_ADMIN);
+		createUser("lhamilton", "roscoe", ROLE_USER);
+		createUser("mverstappen", "jos", ROLE_USER);
+		createUser("driccardo", "shoey", ROLE_USER);
+		createUser("falonso", "alwayshavetoleavethespace", ROLE_USER);
+
+		createPost("Bienvenidos a Fans de las Aves Chilenas. Soy el administrador.");
 	}
 
 	private void createPost(String message) {

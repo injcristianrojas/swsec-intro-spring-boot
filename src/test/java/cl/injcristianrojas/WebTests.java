@@ -32,8 +32,8 @@ public class WebTests {
 	public void testLogin() throws Exception {
 		RequestBuilder requestBuilder = post("/login")
 				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
-	            .param("username", "jperez")
-	            .param("password", "123")
+	            .param("username", "lhamilton")
+	            .param("password", "roscoe")
 	            .with(csrf());
 		this.mvc.perform(requestBuilder)
 	    		.andExpect(redirectedUrl("/"))

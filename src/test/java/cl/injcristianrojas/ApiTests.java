@@ -29,10 +29,10 @@ public class ApiTests {
 	
 	@Before
 	public void setUp() throws Exception {
-		MvcResult result = this.mvc.perform(post("/api/v1/login").param("Content-Type", "application/json").content("{ \"username\": \"jperez\", \"password\": \"123\"}")).andReturn();
+		MvcResult result = this.mvc.perform(post("/api/v1/login").param("Content-Type", "application/json").content("{ \"username\": \"lhamilton\", \"password\": \"roscoe\"}")).andReturn();
 		jwtToken = result.getResponse().getHeader("Authorization").replace(TOKEN_PREFIX, "");
 	}
-	
+
 	@Test
     public void shouldNotAllowAccessToUnauthenticatedUsers() throws Exception {
         this.mvc.perform(get("/api/v2/users")).andExpect(status().isForbidden());
@@ -43,7 +43,7 @@ public class ApiTests {
 		this.mvc.perform(get("/api/v2/users").header("Authorization", TOKEN_PREFIX + jwtToken))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$[1].id", is(2)))
-				.andExpect(jsonPath("$[1].username", is("jperez")));
+				.andExpect(jsonPath("$[1].username", is("lhamilton")));
 				
 	}
 	
@@ -52,7 +52,6 @@ public class ApiTests {
 		this.mvc.perform(get("/api/v2/posts").header("Authorization", TOKEN_PREFIX + jwtToken))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$[0].id", is(1)))
-				.andExpect(jsonPath("$[0].message", is("Holi")));
-				
+				.andExpect(jsonPath("$[0].message", is("Bienvenidos a Fans de las Aves Chilenas. Soy el administrador.")));
 	}
 }
