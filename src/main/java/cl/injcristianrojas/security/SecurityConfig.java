@@ -53,12 +53,13 @@ public class SecurityConfig {
 			http
 				.authorizeRequests().anyRequest()
 				.authenticated().and().formLogin().loginPage("/login").permitAll()
-				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");
+				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
+				.and().csrf().disable();
 		}
 
 		@Override
 		public void configure(WebSecurity web) throws Exception {
-			web.ignoring().antMatchers("/css/**", "/images/**", "/h2-console/**");
+			web.ignoring().antMatchers("/css/**", "/images/**", "/h2/**", "/error");
 		}
 
 		@Override
