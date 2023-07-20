@@ -13,17 +13,24 @@ public class UserWebController {
 
     @Autowired
     private AppUserRepository userRepo;
+    private static final String USERS = "users";
 
     @GetMapping("/users")
     public String showUsers(Model model) {
-    	model.addAttribute("users", userRepo.findAll());
-        return "users";
+        model.addAttribute(USERS, userRepo.findAll());
+        return USERS;
     }
-    
-    @GetMapping("/users/role/{roleid}")
-    public String showUsersByRoleId(Model model, @PathVariable String roleid) {
-    	model.addAttribute("users", userRepo.getUsersByRoleId(roleid));
-        return "users";
+
+    @GetMapping("/users/user/{username}")
+    public String showUsersByUserName(Model model, @PathVariable String username) {
+        model.addAttribute(USERS, userRepo.getUsersByUsername(username));
+        return USERS;
+    }
+
+    @GetMapping("/users/type/{type}")
+    public String showUsersByRoleId(Model model, @PathVariable String type) {
+        model.addAttribute(USERS, userRepo.getUsersByType(type));
+        return USERS;
     }
 
 }

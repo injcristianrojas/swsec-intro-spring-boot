@@ -8,5 +8,6 @@ import cl.injcristianrojas.data.jpa.model.UserJPA;
 
 @Repository
 public interface AppUserRepositoryCustom {
-    List<UserJPA> getUsersByRoleId(String roleId);
+    List<UserJPA> getUsersByUsername(String username);
+    List<UserJPA> getUsersByType(String type);
 }

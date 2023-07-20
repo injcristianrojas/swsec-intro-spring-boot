@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -14,14 +14,20 @@ import cl.injcristianrojas.data.jpa.repositories.AppUserRepositoryCustom;
 
 @Repository
 @Transactional
-public class UserRepositoryCustomImpl implements AppUserRepositoryCustom {
+public class AppUserRepositoryCustomImpl implements AppUserRepositoryCustom {
 
 	@PersistenceContext
 	EntityManager entityManager;
-	
+
 	@Override
-	public List<UserJPA> getUsersByRoleId(String roleId) {
-		Query query =  entityManager.createNativeQuery("SELECT * FROM users where role_id = " + roleId, UserJPA.class);
+	public List<UserJPA> getUsersByUsername(String username) {
+		TypedQuery<UserJPA> query = entityManager.createQuery("from UserJPA where username = '" + username + "'", UserJPA.class);
+		return query.getResultList();
+	}
+
+	@Override
+	public List<UserJPA> getUsersByType(String type) {
+		TypedQuery<UserJPA> query = entityManager.createQuery("from UserJPA where role_id = " + type, UserJPA.class);
 		return query.getResultList();
 	}
 

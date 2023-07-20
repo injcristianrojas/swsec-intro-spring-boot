@@ -35,12 +35,12 @@ public class ApiTests {
 	
 	@Test
     public void shouldNotAllowAccessToUnauthenticatedUsers() throws Exception {
-        this.mvc.perform(get("/api/v1/users")).andExpect(status().isForbidden());
+        this.mvc.perform(get("/api/v2/users")).andExpect(status().isForbidden());
     }
 
 	@Test
 	public void testUsers() throws Exception {
-		this.mvc.perform(get("/api/v1/users").header("Authorization", TOKEN_PREFIX + jwtToken))
+		this.mvc.perform(get("/api/v2/users").header("Authorization", TOKEN_PREFIX + jwtToken))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$[1].id", is(2)))
 				.andExpect(jsonPath("$[1].username", is("jperez")));
@@ -49,7 +49,7 @@ public class ApiTests {
 	
 	@Test
 	public void testPosts() throws Exception {
-		this.mvc.perform(get("/api/v1/posts").header("Authorization", TOKEN_PREFIX + jwtToken))
+		this.mvc.perform(get("/api/v2/posts").header("Authorization", TOKEN_PREFIX + jwtToken))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$[0].id", is(1)))
 				.andExpect(jsonPath("$[0].message", is("Holi")));
