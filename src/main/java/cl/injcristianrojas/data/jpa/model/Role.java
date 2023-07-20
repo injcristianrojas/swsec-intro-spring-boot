@@ -1,4 +1,4 @@
-package cl.injcristianrojas.data.model;
+package cl.injcristianrojas.data.jpa.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,6 +1,6 @@
 package cl.injcristianrojas.security;
 
-import cl.injcristianrojas.data.model.AppUser;
+import cl.injcristianrojas.data.jpa.model.AppUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

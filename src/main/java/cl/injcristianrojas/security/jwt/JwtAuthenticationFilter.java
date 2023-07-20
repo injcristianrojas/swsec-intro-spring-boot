@@ -24,7 +24,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.auth0.jwt.JWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import cl.injcristianrojas.data.model.AppUser;
+import cl.injcristianrojas.data.jpa.model.AppUser;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 

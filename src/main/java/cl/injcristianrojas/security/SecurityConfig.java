@@ -25,8 +25,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import cl.injcristianrojas.data.service.JwtUserDetailsService;
-import cl.injcristianrojas.data.service.MainUserDetailsService;
+import cl.injcristianrojas.data.jpa.service.JwtUserDetailsService;
+import cl.injcristianrojas.data.jpa.service.MainUserDetailsService;
 import cl.injcristianrojas.security.jwt.JwtAuthenticationFilter;
 import cl.injcristianrojas.security.jwt.JwtAuthorizationFilter;
 

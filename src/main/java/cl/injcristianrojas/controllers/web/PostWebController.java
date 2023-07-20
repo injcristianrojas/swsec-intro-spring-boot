@@ -1,7 +1,7 @@
 package cl.injcristianrojas.controllers.web;
 
-import cl.injcristianrojas.data.model.Post;
-import cl.injcristianrojas.data.repositories.PostRepository;
+import cl.injcristianrojas.data.jpa.model.Post;
+import cl.injcristianrojas.data.jpa.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

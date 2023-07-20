@@ -1,6 +1,6 @@
-package cl.injcristianrojas.data.repositories;
+package cl.injcristianrojas.data.jpa.repositories;
 
-import cl.injcristianrojas.data.model.Post;
+import cl.injcristianrojas.data.jpa.model.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

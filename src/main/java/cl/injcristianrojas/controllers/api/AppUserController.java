@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cl.injcristianrojas.data.model.AppUser;
-import cl.injcristianrojas.data.repositories.AppUserRepository;
+import cl.injcristianrojas.data.jpa.model.AppUser;
+import cl.injcristianrojas.data.jpa.repositories.AppUserRepository;
 
 @SuppressWarnings("deprecation")
 @RestController
