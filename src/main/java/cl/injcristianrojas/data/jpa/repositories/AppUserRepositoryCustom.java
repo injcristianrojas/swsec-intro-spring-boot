@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import cl.injcristianrojas.data.jpa.model.AppUser;
+import cl.injcristianrojas.data.jpa.model.UserJPA;
 
 @Repository
 public interface AppUserRepositoryCustom {
-    List<AppUser> getUsersByRoleId(String roleId);
+    List<UserJPA> getUsersByRoleId(String roleId);
 }

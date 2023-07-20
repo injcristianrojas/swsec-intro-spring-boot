@@ -1,6 +1,6 @@
 package cl.injcristianrojas.controllers.api;
 
-import cl.injcristianrojas.data.jpa.model.Post;
+import cl.injcristianrojas.data.jpa.model.PostJPA;
 import cl.injcristianrojas.data.jpa.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,12 +19,12 @@ public class PostRestController {
     private PostRepository postRepo;
 
     @GetMapping("/posts")
-    public List<Post> retrieveAllPosts() {
+    public List<PostJPA> retrieveAllPosts() {
         return postRepo.findAll();
     }
 
     @PostMapping("/posts")
-    Post newPost(@RequestBody Post newPost){
+    PostJPA newPost(@RequestBody PostJPA newPost){
         return postRepo.save(newPost);
     }
 }

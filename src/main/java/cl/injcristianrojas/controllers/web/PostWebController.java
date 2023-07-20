@@ -1,6 +1,6 @@
 package cl.injcristianrojas.controllers.web;
 
-import cl.injcristianrojas.data.jpa.model.Post;
+import cl.injcristianrojas.data.jpa.model.PostJPA;
 import cl.injcristianrojas.data.jpa.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +17,7 @@ public class PostWebController {
 
     @PostMapping("/posts")
     public String createPost(@RequestParam("message") String message, Model model) {
-    	Post post = new Post();
+    	PostJPA post = new PostJPA();
     	post.setMessage(message);
     	repo.save(post);
     	model.addAttribute("posts", repo.findAll());

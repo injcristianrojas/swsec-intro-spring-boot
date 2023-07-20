@@ -9,7 +9,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import cl.injcristianrojas.data.jpa.model.AppUser;
+import cl.injcristianrojas.data.jpa.model.UserJPA;
 import cl.injcristianrojas.data.jpa.repositories.AppUserRepositoryCustom;
 
 @Repository
@@ -20,8 +20,8 @@ public class UserRepositoryCustomImpl implements AppUserRepositoryCustom {
 	EntityManager entityManager;
 	
 	@Override
-	public List<AppUser> getUsersByRoleId(String roleId) {
-		Query query =  entityManager.createNativeQuery("SELECT * FROM users where role_id = " + roleId, AppUser.class);
+	public List<UserJPA> getUsersByRoleId(String roleId) {
+		Query query =  entityManager.createNativeQuery("SELECT * FROM users where role_id = " + roleId, UserJPA.class);
 		return query.getResultList();
 	}
 
