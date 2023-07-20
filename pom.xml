@@ -14,7 +14,7 @@
         <sonar.dependencyCheck.reportPath>target/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
         <sonar.dependencyCheck.htmlReportPath>target/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
         <sonar.zaproxy.reportPath>target/zap-reports/zapReport.xml</sonar.zaproxy.reportPath>
-        <owasp.dependencycheck.version>6.1.6</owasp.dependencycheck.version>
+        <owasp.dependencycheck.version>8.3.1</owasp.dependencycheck.version>
         <spotbugs.version>4.2.2</spotbugs.version>
     </properties>
 
