@@ -32,7 +32,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
 	public JwtAuthenticationFilter(AuthenticationManager authenticationManager) {
 		this.authenticationManager = authenticationManager;
-		setFilterProcessesUrl(Constants.SIGN_UP_URL);
+		setFilterProcessesUrl(Constants.LOGIN_URI);
 	}
 
 	@Override

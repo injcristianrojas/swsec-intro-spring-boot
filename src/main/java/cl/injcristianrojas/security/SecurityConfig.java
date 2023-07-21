@@ -1,6 +1,6 @@
 package cl.injcristianrojas.security;
 
-import static cl.injcristianrojas.security.jwt.Constants.SIGN_UP_URL;
+import static cl.injcristianrojas.security.jwt.Constants.LOGIN_URI;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
@@ -101,7 +101,7 @@ public class SecurityConfig {
 					.antMatcher("/api/**")
 					.cors().and().csrf().disable()
 					.authorizeRequests()
-					.antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
+					.antMatchers(HttpMethod.POST, LOGIN_URI).permitAll()
 					.anyRequest().authenticated()
 					.and()
 					.addFilter(new JwtAuthenticationFilter(authenticationManager()))
