@@ -29,7 +29,7 @@ public class ApiTests {
 	
 	@Before
 	public void setUp() throws Exception {
-		MvcResult result = this.mvc.perform(post("/api/v1/login").param("Content-Type", "application/json").content("{ \"username\": \"lhamilton\", \"password\": \"roscoe\"}")).andReturn();
+		MvcResult result = this.mvc.perform(post("/api/v2/login").param("Content-Type", "application/json").content("{ \"username\": \"lhamilton\", \"password\": \"roscoe\"}")).andReturn();
 		jwtToken = result.getResponse().getHeader("Authorization").replace(TOKEN_PREFIX, "");
 	}
 
