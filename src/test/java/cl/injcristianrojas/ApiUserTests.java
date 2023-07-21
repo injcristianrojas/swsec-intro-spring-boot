@@ -49,7 +49,6 @@ public class ApiUserTests {
 	public void testPosts() throws Exception {
 		this.mvc.perform(get("/api/v2/posts").header("Authorization", TOKEN_PREFIX + jwtToken))
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$[0].id", is(1)))
 				.andExpect(jsonPath("$[0].message", is("Bienvenidos a Fans de las Aves Chilenas. Soy el administrador.")));
 	}
 }

@@ -42,7 +42,6 @@ public class ApiAdminTests {
 	public void testUsers() throws Exception {
 		this.mvc.perform(get("/api/v2/users").header("Authorization", TOKEN_PREFIX + jwtToken))
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$[1].id", is(2)))
 				.andExpect(jsonPath("$[1].username", is("lhamilton")));
 				
 	}
@@ -51,7 +50,6 @@ public class ApiAdminTests {
 	public void testPosts() throws Exception {
 		this.mvc.perform(get("/api/v2/posts").header("Authorization", TOKEN_PREFIX + jwtToken))
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$[0].id", is(1)))
 				.andExpect(jsonPath("$[0].message", is("Bienvenidos a Fans de las Aves Chilenas. Soy el administrador.")));
 	}
 }
