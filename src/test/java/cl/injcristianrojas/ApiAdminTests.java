@@ -20,7 +20,7 @@ import org.springframework.test.web.servlet.MvcResult;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ApiTests {
+public class ApiAdminTests {
 	
 	@Autowired
 	private MockMvc mvc;
@@ -29,7 +29,7 @@ public class ApiTests {
 	
 	@Before
 	public void setUp() throws Exception {
-		MvcResult result = this.mvc.perform(post("/api/v2/login").param("Content-Type", "application/json").content("{ \"username\": \"lhamilton\", \"password\": \"roscoe\"}")).andReturn();
+		MvcResult result = this.mvc.perform(post("/api/v2/login").param("Content-Type", "application/json").content("{ \"username\": \"admin\", \"password\": \"admin\"}")).andReturn();
 		jwtToken = result.getResponse().getHeader("Authorization").replace(TOKEN_PREFIX, "");
 	}
 
