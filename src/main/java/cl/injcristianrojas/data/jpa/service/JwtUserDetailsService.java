@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 import cl.injcristianrojas.data.jpa.model.UserJPA;
 import cl.injcristianrojas.data.jpa.repositories.AppUserRepositoryJPA;
 
-import static java.util.Collections.emptyList;
-
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
 
@@ -26,7 +24,10 @@ public class JwtUserDetailsService implements UserDetailsService {
         if (applicationUser == null) {
             throw new UsernameNotFoundException(username);
         }
-        return new User(applicationUser.getUsername(), applicationUser.getPassword(), emptyList());
+        UserDetails user = new User(applicationUser.getUsername(), applicationUser.getPassword(), applicationUser.getAuthorities());
+        System.out.println("============================ USER DETAILS ====================================");
+        System.out.println(user);
+        return user;
     }
 	
 }
