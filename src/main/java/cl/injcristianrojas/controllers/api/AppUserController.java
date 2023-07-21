@@ -12,7 +12,7 @@ import cl.injcristianrojas.data.jpa.repositories.AppUserRepositoryJPA;
 
 @SuppressWarnings("deprecation")
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v2")
 public class AppUserController {
 
 	private AppUserRepositoryJPA applicationUserRepository;
