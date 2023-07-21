@@ -24,10 +24,7 @@ public class JwtUserDetailsService implements UserDetailsService {
         if (applicationUser == null) {
             throw new UsernameNotFoundException(username);
         }
-        UserDetails user = new User(applicationUser.getUsername(), applicationUser.getPassword(), applicationUser.getAuthorities());
-        System.out.println("============================ USER DETAILS ====================================");
-        System.out.println(user);
-        return user;
+        return new User(applicationUser.getUsername(), applicationUser.getPassword(), applicationUser.getAuthorities());
     }
 	
 }
