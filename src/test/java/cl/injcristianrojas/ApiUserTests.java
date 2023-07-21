@@ -41,9 +41,7 @@ public class ApiUserTests {
 	@Test
 	public void testUsers() throws Exception {
 		this.mvc.perform(get("/api/v2/users").header("Authorization", TOKEN_PREFIX + jwtToken))
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("$[1].id", is(2)))
-				.andExpect(jsonPath("$[1].username", is("lhamilton")));
+				.andExpect(status().isUnauthorized());
 				
 	}
 	
