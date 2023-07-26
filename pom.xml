@@ -14,8 +14,8 @@
         <sonar.dependencyCheck.reportPath>target/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
         <sonar.dependencyCheck.htmlReportPath>target/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
         <sonar.zaproxy.reportPath>target/zap-reports/zapReport.xml</sonar.zaproxy.reportPath>
-        <owasp.dependencycheck.version>6.1.6</owasp.dependencycheck.version>
-        <spotbugs.version>4.2.2</spotbugs.version>
+        <owasp.dependencycheck.version>8.3.1</owasp.dependencycheck.version>
+        <spotbugs.version>4.7.3.5</spotbugs.version>
     </properties>
 
     <parent>
@@ -218,7 +218,7 @@
                         <plugin>
                             <groupId>com.h3xstream.findsecbugs</groupId>
                             <artifactId>findsecbugs-plugin</artifactId>
-                            <version>LATEST</version>
+                            <version>1.12.0</version>
                         </plugin>
                     </plugins>
                 </configuration>
