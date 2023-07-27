@@ -2,6 +2,8 @@ package cl.injcristianrojas;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.hamcrest.CoreMatchers.is;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,11 +19,19 @@ import org.springframework.test.web.servlet.MockMvc;
 public class SwaggerTests {
 
   @Autowired
-	private MockMvc mvc;
+  private MockMvc mvc;
 
   @Test
-	public void testHomePage() throws Exception {
-		this.mvc.perform(get("/swagger-ui/index.html")).andExpect(status().is2xxSuccessful());
+  public void testSwaggerUI() throws Exception {
+    this.mvc.perform(get("/swagger-ui/index.html"))
+        .andExpect(status().is2xxSuccessful());
     // Extect to see "Aves API"
-	}
+  }
+
+  @Test
+  public void testSwaggerJSON() throws Exception {
+    this.mvc.perform(get("/api-docs"))
+        .andExpect(status().is2xxSuccessful())
+        .andExpect(jsonPath("$.openapi", is("3.0.1")));
+  }
 }
