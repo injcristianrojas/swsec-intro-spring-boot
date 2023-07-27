@@ -59,7 +59,7 @@ public class SecurityConfig {
 
 		@Override
 		public void configure(WebSecurity web) throws Exception {
-			web.ignoring().antMatchers("/css/**", "/images/**", "/h2/**", "/error", "/api-docs");
+			web.ignoring().antMatchers("/css/**", "/images/**", "/h2/**", "/error", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html");
 		}
 
 		@Override

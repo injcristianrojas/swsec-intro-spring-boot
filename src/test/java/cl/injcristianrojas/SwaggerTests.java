@@ -25,12 +25,11 @@ public class SwaggerTests {
   public void testSwaggerUI() throws Exception {
     this.mvc.perform(get("/swagger-ui/index.html"))
         .andExpect(status().is2xxSuccessful());
-    // Extect to see "Aves API"
   }
 
   @Test
   public void testSwaggerJSON() throws Exception {
-    this.mvc.perform(get("/api-docs"))
+    this.mvc.perform(get("/v3/api-docs"))
         .andExpect(status().is2xxSuccessful())
         .andExpect(jsonPath("$.openapi", is("3.0.1")));
   }

@@ -17,8 +17,6 @@ spring:
       url: jdbc:h2:mem:testdb
 
 springdoc:
-  api-docs:
-    path: /api-docs
   pathsToMatch:
     - /api/v2/**
   show-login-endpoint: true
