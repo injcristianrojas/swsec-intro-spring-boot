@@ -21,3 +21,6 @@ springdoc:
     path: /api-docs
   pathsToMatch:
     - /api/v2/**
+  show-login-endpoint: true
+  paths-to-exclude:
+    - /login

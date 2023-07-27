@@ -22,11 +22,11 @@ public class AppUserController {
 		this.applicationUserRepository = applicationUserRepository;
 		this.passwordEncoder = NoOpPasswordEncoder.getInstance();
 	}
-	
+
 	@PostMapping("/sign-up")
-    public void signUp(@RequestBody UserJPA user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        applicationUserRepository.save(user);
-    }
+	public void signUp(@RequestBody UserJPA user) {
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		applicationUserRepository.save(user);
+	}
 
 }

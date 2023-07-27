@@ -5,6 +5,8 @@ import cl.injcristianrojas.data.jdbc.service.UserServiceJDBC;
 import cl.injcristianrojas.data.jpa.model.UserJPA;
 import cl.injcristianrojas.data.jpa.repositories.AppUserRepositoryJPA;
 import cl.injcristianrojas.data.jpa.service.JwtUserDetailsService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,16 +39,19 @@ public class UserRestController {
     }
 
     @GetMapping("/api/v1/users")
+    @Operation(summary = "View users", security = @SecurityRequirement(name = "bearerAuth"))
     public List<UserJPA> retrieveAllUsers() {
         return userRepoJPA.findAll();
     }
 
     @GetMapping("/api/v1/users/user/{username}")
+    @Operation(summary = "View user", security = @SecurityRequirement(name = "bearerAuth"))
     public List<UserJPA> retrieveUsersByUserName(@PathVariable String username) {
         return userRepoJPA.getUsersByUsername(username);
     }
 
     @GetMapping("/api/v2/users")
+    @Operation(summary = "View users", security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<List<UserJDBC>> getAllUsers() {
         return isAdmin() ? 
             ResponseEntity.status(HttpStatus.OK).body(userServiceJDBC.findAll()) :
@@ -54,6 +59,7 @@ public class UserRestController {
     }
 
     @GetMapping("/api/v2/users/user/{username}")
+    @Operation(summary = "View user", security = @SecurityRequirement(name = "bearerAuth"))
     public List<UserJDBC> getUsersByUserName(@PathVariable String username) {
         return userServiceJDBC.getUsersByUsername(username);
     }
