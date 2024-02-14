@@ -8,6 +8,7 @@ build/*
 gradle/*
 logs/*
 target/*
+bruno/*
 .classpath
 .project
 .dccache
